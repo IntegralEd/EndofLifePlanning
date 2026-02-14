@@ -1,42 +1,30 @@
 ---
-// Header with WishesMadeClear logo
+// Header with WishesMadeClear logo - full bleed
 ---
 
 <header class="site-header">
-  <div class="container">
-    <div class="header-content">
-      <img
-        src="/images/logo.png"
-        alt="WishesMadeClear"
-        class="site-logo"
-      />
-    </div>
-  </div>
+  <img
+    src="/images/logo.png"
+    alt="WishesMadeClear"
+    class="site-logo"
+  />
 </header>
 
 <style>
   .site-header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 1.5rem 0;
-    box-shadow: var(--shadow-subtle);
-  }
-
-  .header-content {
+    background: #FCFDDA;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0;
+    margin: 0;
   }
 
   .site-logo {
-    height: clamp(48px, 8vw, 80px);
-    width: auto;
+    width: 100%;
+    height: auto;
     display: block;
-  }
-
-  @media (max-width: 768px) {
-    .site-header {
-      padding: 1rem 0;
-    }
+    max-width: 100%;
   }
 </style>

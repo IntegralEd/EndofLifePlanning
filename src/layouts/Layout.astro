@@ -1,4 +1,7 @@
 ---
+import '../styles/theme.css';
+import '../styles/base.css';
+
 interface Props {
   title: string;
   description?: string;
@@ -24,13 +27,9 @@ const {
   <meta property="og:type" content="website">
 
   <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/favicon-64x64.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="/src/styles/base.css">
-  <link rel="stylesheet" href="/src/styles/theme.css">
 </head>
 <body>
   <slot />
