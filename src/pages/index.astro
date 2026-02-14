@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import Navigation from '../components/Navigation.astro';
 import Hero from '../components/Hero.astro';
 import CarouselCards from '../components/CarouselCards.astro';
 import Misconceptions from '../components/Misconceptions.astro';
@@ -11,12 +12,21 @@ import Footer from '../components/Footer.astro';
 
 <Layout title="WishesMadeClear - End of Life Planning Workshops">
   <Header />
+  <Navigation />
   <main>
     <Hero />
-    <CarouselCards />
-    <Misconceptions />
-    <ServiceCards />
-    <MailingListCTA />
+    <div id="questions">
+      <CarouselCards />
+    </div>
+    <div id="misconceptions">
+      <Misconceptions />
+    </div>
+    <div id="services">
+      <ServiceCards />
+    </div>
+    <div id="signup">
+      <MailingListCTA />
+    </div>
   </main>
   <Footer />
 </Layout>
