@@ -1,31 +1,236 @@
 ---
-// Header with WishesMadeClear logo - full bleed
+// Unified header with logo and navigation
+const navItems = [
+  { label: 'Questions', href: '#questions' },
+  { label: 'Misconceptions', href: '#misconceptions' },
+  { label: 'What We Cover', href: '#services' },
+  { label: 'Sign Up for a Workshop', href: '/signup' },
+];
 ---
 
 <header class="site-header">
-  <img
-    src="/images/logo.png"
-    alt="WishesMadeClear"
-    class="site-logo"
-  />
+  <div class="header-container">
+    <a href="/" class="logo-link">
+      <img
+        src="/images/logo.png"
+        alt="WishesMadeClear - End of Life Planning Workshops"
+        class="site-logo"
+      />
+    </a>
+
+    <nav class="site-nav" aria-label="Main navigation">
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        {navItems.map((item) => (
+          <li class="nav-item">
+            <a href={item.href} class="nav-link">{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <style>
   .site-header {
     background: var(--bg);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 0;
-    margin: 0;
     border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-subtle);
+    margin: 0;
+    padding: 0;
+  }
+
+  .header-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
   }
 
   .site-logo {
-    width: 100%;
+    max-height: 48px;
     height: auto;
+    width: auto;
     display: block;
-    max-width: 100%;
+  }
+
+  /* Navigation */
+  .site-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  .hamburger-line {
+    width: 24px;
+    height: 3px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .hamburger[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    margin: 0;
+  }
+
+  .nav-link {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    display: block;
+    border-radius: var(--radius-sm);
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--brand-2);
+    background: rgba(64, 32, 77, 0.05);
+    text-decoration: none;
+  }
+
+  .nav-link:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .site-logo {
+      max-height: 40px;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    .nav-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      flex-direction: column;
+      gap: 0;
+      padding: 0;
+      box-shadow: var(--shadow-card);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      border-bottom: 0;
+    }
+
+    .nav-menu.open {
+      max-height: 350px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-item:last-child {
+      border-bottom: none;
+    }
+
+    .nav-link {
+      padding: 1rem 1.25rem;
+      border-radius: 0;
+    }
   }
 </style>
+
+<script>
+  // Hamburger menu toggle
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('.nav-menu');
+
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+      const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!isExpanded));
+      navMenu.classList.toggle('open');
+    });
+
+    // Close menu when clicking a link
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.setAttribute('aria-expanded', 'false');
+        navMenu.classList.remove('open');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target as Node) && !navMenu.contains(e.target as Node)) {
+        hamburger.setAttribute('aria-expanded', 'false');
+        navMenu.classList.remove('open');
+      }
+    });
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      if (href && href !== '#') {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    });
+  });
+</script>

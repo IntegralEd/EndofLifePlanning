@@ -46,23 +46,23 @@ export const carouselPrompts = [
 export const misconceptions = [
   {
     id: 1,
-    myth: "I'm too young to think about this",
-    reality: "Life is unpredictable. Having a plan protects your loved ones at any age."
+    myth: "This is for retirement age",
+    reality: "Accidents and sudden illness can happen to anyone. If you are over 18 and have people you care about, you need a plan. Even a simple plan helps your family avoid confusion and conflict."
   },
   {
     id: 2,
-    myth: "It's too expensive or complicated",
-    reality: "Our workshops make it simple and affordable. You'll leave with a clear action plan."
+    myth: "Only rich people need this",
+    reality: "Everyone has something. Bank accounts, a car, photos, passwords. Without clear instructions, even small things can get tied up or lost. Planning is for anyone who wants to make it easier on the people they leave behind."
   },
   {
     id: 3,
-    myth: "My family already knows my wishes",
-    reality: "Verbal wishes aren't legally binding. Documentation ensures your choices are honored."
+    myth: "My family knows what I want",
+    reality: "You might have talked about it. But if it is not written down, family members often disagree or second-guess. Clear written instructions remove the burden of guessing and give your loved ones permission to follow your wishes."
   },
   {
     id: 4,
-    myth: "I can put it off until later",
-    reality: "Delay creates uncertainty and burden. Taking action now brings peace of mind."
+    myth: "If I die young, there won't be much to sort out",
+    reality: "Young adults often have student loans, leases, online accounts, pets, and personal items with emotional value. Without a plan, parents or partners may not have legal access to handle these things quickly."
   }
 ];
 
