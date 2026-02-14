@@ -5,39 +5,41 @@
 
 export const hero = {
   heading: "End of Life Planning Workshops That Guide You to Make Your Wishes Clear",
-  tagline: "In-person sessions to help you document what matters most"
+  tagline: "Guided, in-person workshops to help you put your wishes in writing.",
+  supportText: "We know talking about death is difficult. Sessions introduce topics and tasks mindfully, with space to process emotions.",
+  boundaryText: "We guide and educate. We do not provide legal or medical advice. If you want, we can refer you to licensed professionals to finalize documents."
 };
 
 export const carouselPrompts = [
   {
     id: 1,
-    front: "Who should make medical decisions if I can't?",
-    back: "Our workshop helps you identify and appoint a healthcare proxy who understands your values."
+    front: "If you were in a car accident tomorrow, who would make your medical decisions?",
+    back: "Who would show up at the hospital? Would they all agree on what you would want?"
   },
   {
     id: 2,
-    front: "What if my family disagrees about my care?",
-    back: "We guide you through conversations that prevent conflict by making your wishes explicit and documented."
+    front: "If you were suddenly unable to speak or move, would anyone know your passwords?",
+    back: "What about your bank accounts, email, cloud storage, and social media?"
   },
   {
     id: 3,
-    front: "How do I make sure my assets go where I want?",
-    back: "Learn the essential documents you need and how to organize them so nothing is left to chance."
+    front: "Do you know how much medical intervention you would want in a coma?",
+    back: "Would the people closest to you agree about those choices?"
   },
   {
     id: 4,
-    front: "What happens to my digital accounts and passwords?",
-    back: "We'll show you how to create a secure plan for digital assets, from social media to online banking."
+    front: "If you and a co-parent were injured together, who would care for your children?",
+    back: "Is that decision written down, or assumed?"
   },
   {
     id: 5,
-    front: "Who gets my personal belongings and family heirlooms?",
-    back: "Document your wishes for sentimental items to honor relationships and avoid disputes."
+    front: "If you died tomorrow, who would sort through your private belongings?",
+    back: "Is that the person you would choose?"
   },
   {
     id: 6,
-    front: "What if I want to change my mind later?",
-    back: "All plans are living documents. We teach you how to review and update them as life changes."
+    front: "Who would you trust with your personal journals or other private belongings?",
+    back: "What if your kids or parents went through your secret stuff?"
   }
 ];
 

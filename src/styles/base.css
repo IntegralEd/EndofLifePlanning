@@ -12,6 +12,8 @@
 html,
 body {
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -19,7 +21,6 @@ html {
 }
 
 body {
-  margin: 0;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
@@ -95,6 +96,17 @@ input[type="submit"] {
   border: 1px solid transparent;
   font-weight: 600;
   transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type="email"],
+input[type="text"] {
+  -webkit-appearance: none;
+  border-radius: var(--radius-sm);
+  font-size: 16px; /* Prevents iOS zoom on focus */
 }
 
 button:focus-visible,
@@ -157,7 +169,13 @@ input:focus-visible {
 
 /* Section spacing */
 section {
-  padding: var(--section-padding) 0;
+  padding: clamp(3rem, 8vw, 5rem) 0;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: clamp(2rem, 6vw, 3rem) 0;
+  }
 }
 
 /* Cards */

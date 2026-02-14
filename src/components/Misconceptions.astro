@@ -35,7 +35,7 @@ import { misconceptions } from '../content/siteCopy';
   .misconceptions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: 1.5rem;
     max-width: 1000px;
     margin: 0 auto;
   }
@@ -46,11 +46,11 @@ import { misconceptions } from '../content/siteCopy';
     padding: 1.75rem;
     box-shadow: var(--shadow-subtle);
     border: 1px solid var(--border);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   }
 
   .misconception-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
     box-shadow: var(--shadow-card);
     border-color: var(--border-strong);
   }
@@ -62,18 +62,19 @@ import { misconceptions } from '../content/siteCopy';
   }
 
   .myth h3 {
-    color: var(--error-muted);
+    color: var(--ink-muted);
     font-size: 1.125rem;
     font-weight: 600;
-    font-style: italic;
+    font-style: normal;
   }
 
   .myth .icon {
     display: inline-block;
-    color: var(--error-muted);
+    color: var(--brand-soft);
     font-size: 1.5rem;
     margin-right: 0.5rem;
     font-weight: bold;
+    opacity: 0.8;
   }
 
   .reality {
@@ -101,7 +102,17 @@ import { misconceptions } from '../content/siteCopy';
     }
   }
 
+  @media (max-width: 768px) {
+    .misconceptions-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
+    .misconception-card {
+      transition: none;
+    }
+
     .misconception-card:hover {
       transform: none;
     }
