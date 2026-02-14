@@ -2,156 +2,132 @@
 import { carouselPrompts } from '../content/siteCopy';
 ---
 
-<section class="carousel-section">
+<section class="qa-section">
   <div class="container">
     <h2>Can you Benefit from this Workshop?</h2>
-    <p class="carousel-intro">Click on these common questions participants discuss and see how you might respond...</p>
-    <div class="carousel-container">
-      <button class="carousel-btn carousel-btn-prev" aria-label="Previous card">‹</button>
-      <div class="carousel-track-container">
-        <div class="carousel-track">
-          {carouselPrompts.map((prompt) => (
-            <div
-              class="flip-card"
-              data-card-id={prompt.id}
-              role="button"
-              tabindex="0"
-              aria-expanded="false"
-              aria-label={`Card ${prompt.id}: ${prompt.front}. Press Enter or Space to reveal follow-up.`}
-            >
-              <div class="flip-card-inner">
-                <!-- Front side -->
-                <div class="card-face card-front">
-                  <span class="card-label">Question</span>
-                  <p class="card-text">{prompt.front}</p>
-                  <span class="card-helper">Click to reveal a follow-up</span>
-                </div>
-                <!-- Back side -->
-                <div class="card-face card-back">
-                  <span class="card-label">Follow-up</span>
-                  <p class="card-text">{prompt.back}</p>
-                  <img src={prompt.icon} alt="" class="card-icon" aria-hidden="true" />
-                </div>
-              </div>
+    <p class="qa-intro">Click on these common questions participants discuss and see how you might respond...</p>
+    <div class="qa-grid">
+      {carouselPrompts.map((prompt) => (
+        <details class="qa-card">
+          <summary class="qa-card-summary">
+            <span class="qa-card-label">Question</span>
+            <p class="qa-card-question">{prompt.front}</p>
+            <span class="qa-card-helper">Click to reveal a follow-up</span>
+          </summary>
+          <div class="qa-card-body">
+            <span class="qa-card-label qa-card-label-followup">Follow-up</span>
+            <p class="qa-card-followup">{prompt.back}</p>
+            <div class="qa-card-icon-wrapper">
+              <img src={prompt.icon} alt="" class="qa-card-icon" aria-hidden="true" />
             </div>
-          ))}
-        </div>
-      </div>
-      <button class="carousel-btn carousel-btn-next" aria-label="Next card">›</button>
-    </div>
-    <div class="carousel-dots">
-      {carouselPrompts.map((_, index) => (
-        <button class="carousel-dot" data-index={index} aria-label={`Go to card ${index + 1}`}></button>
+          </div>
+        </details>
       ))}
     </div>
   </div>
 </section>
 
 <style>
-  .carousel-section {
+  .qa-section {
     background: var(--bg);
   }
 
-  .carousel-section h2 {
+  .qa-section h2 {
     text-align: center;
     margin-bottom: 1rem;
   }
 
-  .carousel-intro {
+  .qa-intro {
     text-align: center;
     font-size: clamp(1rem, 2vw, 1.125rem);
     color: var(--ink-muted);
     max-width: 700px;
-    margin: 0 auto 2.5rem;
+    margin: 0 auto 3rem;
     line-height: 1.6;
   }
 
-  .carousel-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    max-width: 900px;
+  /* Grid layout */
+  .qa-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 1rem;
   }
 
-  .carousel-track-container {
-    flex: 1;
+  @media (min-width: 768px) {
+    .qa-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .qa-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  /* Card structure */
+  .qa-card {
+    position: relative;
+    max-width: 520px;
+    aspect-ratio: 3 / 4;
+    margin: 0 auto;
+    background: white;
+    border: 4px solid white;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(64, 32, 77, 0.12);
     overflow: hidden;
-    padding: 2rem 1rem;
-    display: flex;
-    justify-content: center;
   }
 
-  .carousel-track {
-    display: flex;
-    transition: transform 0.4s ease-in-out;
-    align-items: center;
-  }
-
-  /* Card container */
-  .flip-card {
-    min-width: 100%;
-    width: 100%;
-    max-width: 380px;
-    aspect-ratio: 5 / 6;
-    margin: 0 auto;
-    perspective: 1000px;
+  .qa-card > summary {
+    list-style: none;
     cursor: pointer;
-    outline: none;
   }
 
-  .flip-card:focus-visible {
-    outline: 3px solid var(--focus);
-    outline-offset: 8px;
-    border-radius: 16px;
+  .qa-card > summary::-webkit-details-marker {
+    display: none;
   }
 
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
+  /* Card inner border and background */
+  .qa-card-summary,
+  .qa-card-body {
     height: 100%;
-    transition: transform 0.6s ease;
-    transform-style: preserve-3d;
-  }
-
-  .flip-card.flipped .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-
-  /* Card faces - simplified structure */
-  .card-face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 16px;
+    border: 2px solid var(--brand-1);
+    border-radius: 14px;
     padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 16px rgba(64, 32, 77, 0.12);
+    position: relative;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255, 250, 246, 0.2) 0%, transparent 50%),
+      #F2F1EE;
   }
 
-  .card-front {
-    background: white;
-    border: 2px solid var(--brand-1);
+  .qa-card-body {
+    background:
+      radial-gradient(circle at 30% 30%, rgba(83, 54, 96, 0.08) 0%, transparent 50%),
+      var(--ink-2);
+    border-color: rgba(255, 255, 255, 0.3);
   }
 
-  .card-back {
-    background: var(--ink-2);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    transform: rotateY(180deg);
+  /* When opened, hide summary and show body */
+  .qa-card[open] > summary {
+    display: none;
   }
 
   /* Card labels */
-  .card-label {
+  .qa-card-label {
     position: absolute;
-    top: 1.25rem;
+    top: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -159,296 +135,131 @@ import { carouselPrompts } from '../content/siteCopy';
     opacity: 0.7;
   }
 
-  .card-back .card-label {
+  .qa-card-label-followup {
     color: rgba(255, 255, 255, 0.8);
   }
 
   /* Card text */
-  .card-text {
-    font-size: clamp(1.0625rem, 2.2vw, 1.25rem);
+  .qa-card-question {
+    font-size: clamp(1.125rem, 2.2vw, 1.375rem);
     font-weight: 600;
     color: var(--ink);
     text-align: center;
     margin: 0;
-    line-height: 1.5;
-  }
-
-  .card-back .card-text {
-    color: white;
-    font-weight: 400;
     line-height: 1.6;
   }
 
-  /* Helper text on front */
-  .card-helper {
+  .qa-card-followup {
+    font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+    font-weight: 400;
+    color: white;
+    text-align: center;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* Helper text */
+  .qa-card-helper {
     position: absolute;
-    bottom: 1.25rem;
+    bottom: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     color: var(--ink-muted);
     opacity: 0.7;
     white-space: nowrap;
   }
 
-  /* Icon on back */
-  .card-icon {
-    width: 70px;
-    height: 70px;
-    margin-top: 1.25rem;
+  /* Icon area */
+  .qa-card-icon-wrapper {
+    margin-top: 1.5rem;
+  }
+
+  .qa-card-icon {
+    width: 80px;
+    height: 80px;
     display: block;
     opacity: 0.85;
   }
 
-  /* Navigation buttons */
-  .carousel-btn {
-    background: var(--brand-1);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease, background 0.2s ease;
-    flex-shrink: 0;
-    font-weight: 400;
-    line-height: 1;
-    cursor: pointer;
-  }
-
-  .carousel-btn:hover:not(:disabled) {
-    background: var(--brand-1);
-    transform: scale(1.1);
-  }
-
-  .carousel-btn:disabled {
-    background: var(--brand-soft);
-    opacity: 0.4;
-    cursor: not-allowed;
-  }
-
-  .carousel-btn:focus-visible {
+  /* Focus state */
+  .qa-card-summary:focus-visible {
     outline: 3px solid var(--focus);
-    outline-offset: 3px;
-  }
-
-  /* Dot indicators */
-  .carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.625rem;
-    margin-top: 2rem;
-  }
-
-  .carousel-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: transparent;
-    border: 2px solid var(--brand-1);
-    padding: 0;
-    transition: all 0.2s ease;
-    cursor: pointer;
-  }
-
-  .carousel-dot.active {
-    background: var(--brand-1);
-  }
-
-  .carousel-dot:hover {
-    transform: scale(1.2);
-  }
-
-  .carousel-dot:focus-visible {
-    outline: 2px solid var(--focus);
-    outline-offset: 2px;
-  }
-
-  /* Tablet responsive */
-  @media (max-width: 768px) {
-    .carousel-track-container {
-      padding: 1.5rem 0.5rem;
-    }
-
-    .flip-card {
-      max-width: 320px;
-    }
-
-    .card-face {
-      padding: 2rem 1.75rem;
-    }
-
-    .card-text {
-      font-size: clamp(1rem, 3.5vw, 1.125rem);
-    }
-
-    .card-icon {
-      width: 60px;
-      height: 60px;
-      margin-top: 1rem;
-    }
-
-    .carousel-btn {
-      width: 36px;
-      height: 36px;
-      font-size: 1.25rem;
-    }
+    outline-offset: 4px;
+    border-radius: 14px;
   }
 
   /* Mobile responsive */
+  @media (max-width: 768px) {
+    .qa-intro {
+      margin-bottom: 2rem;
+    }
+
+    .qa-grid {
+      gap: 1.5rem;
+    }
+
+    .qa-card-summary,
+    .qa-card-body {
+      padding: 2rem 1.5rem;
+    }
+
+    .qa-card-question,
+    .qa-card-followup {
+      font-size: clamp(1rem, 3.5vw, 1.25rem);
+    }
+
+    .qa-card-icon {
+      width: 70px;
+      height: 70px;
+    }
+  }
+
   @media (max-width: 480px) {
-    .carousel-track-container {
-      padding: 1.25rem 0.25rem;
+    .qa-grid {
+      gap: 1.25rem;
+      padding: 0 0.5rem;
     }
 
-    .flip-card {
-      max-width: 280px;
+    .qa-card {
+      border-radius: 16px;
     }
 
-    .card-face {
+    .qa-card-summary,
+    .qa-card-body {
       padding: 1.75rem 1.5rem;
       border-radius: 12px;
     }
 
-    .card-label {
-      top: 1rem;
-      font-size: 0.625rem;
-    }
-
-    .card-text {
-      font-size: clamp(0.9375rem, 4vw, 1.0625rem);
-      line-height: 1.5;
-    }
-
-    .card-helper {
-      bottom: 1rem;
+    .qa-card-label {
+      top: 1.25rem;
       font-size: 0.6875rem;
     }
 
-    .card-icon {
-      width: 50px;
-      height: 50px;
-      margin-top: 0.875rem;
+    .qa-card-question,
+    .qa-card-followup {
+      font-size: clamp(0.9375rem, 4vw, 1.125rem);
     }
 
-    .carousel-btn {
-      width: 32px;
-      height: 32px;
-      font-size: 1.125rem;
+    .qa-card-helper {
+      bottom: 1.25rem;
+      font-size: 0.75rem;
+    }
+
+    .qa-card-icon-wrapper {
+      margin-top: 1.25rem;
+    }
+
+    .qa-card-icon {
+      width: 60px;
+      height: 60px;
     }
   }
 
-  /* Reduced motion: instant reveal */
+  /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
-    .flip-card-inner {
-      transition: opacity 0.2s ease;
-    }
-
-    .flip-card.flipped .flip-card-inner {
-      transform: none;
-    }
-
-    .flip-card.flipped .card-front {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .flip-card:not(.flipped) .card-back {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .card-back {
-      transform: none;
+    .qa-card {
+      transition: none;
     }
   }
 </style>
-
-<script>
-  // Carousel navigation
-  let currentIndex = 0;
-  const cards = document.querySelectorAll('.flip-card');
-  const track = document.querySelector('.carousel-track') as HTMLElement;
-  const dots = document.querySelectorAll('.carousel-dot');
-  const prevBtn = document.querySelector('.carousel-btn-prev') as HTMLButtonElement;
-  const nextBtn = document.querySelector('.carousel-btn-next') as HTMLButtonElement;
-
-  function updateCarousel() {
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-    // Update dots
-    dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentIndex);
-    });
-
-    // Update button states
-    prevBtn.disabled = currentIndex === 0;
-    nextBtn.disabled = currentIndex === cards.length - 1;
-  }
-
-  // Navigation buttons
-  prevBtn.addEventListener('click', () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateCarousel();
-    }
-  });
-
-  nextBtn.addEventListener('click', () => {
-    if (currentIndex < cards.length - 1) {
-      currentIndex++;
-      updateCarousel();
-    }
-  });
-
-  // Dot navigation
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      currentIndex = index;
-      updateCarousel();
-    });
-  });
-
-  // Flip card interaction with keyboard support
-  cards.forEach((card) => {
-    const flipCard = (e: Event) => {
-      const isFlipped = card.classList.contains('flipped');
-      card.classList.toggle('flipped');
-      card.setAttribute('aria-expanded', String(!isFlipped));
-    };
-
-    // Click
-    card.addEventListener('click', flipCard);
-
-    // Keyboard (Enter and Space)
-    card.addEventListener('keydown', (e: KeyboardEvent) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        flipCard(e);
-      }
-    });
-  });
-
-  // Carousel keyboard navigation (arrows)
-  document.addEventListener('keydown', (e) => {
-    // Only navigate if not focused on a card
-    const activeElement = document.activeElement;
-    if (activeElement && activeElement.classList.contains('flip-card')) {
-      return;
-    }
-
-    if (e.key === 'ArrowLeft' && currentIndex > 0) {
-      currentIndex--;
-      updateCarousel();
-    } else if (e.key === 'ArrowRight' && currentIndex < cards.length - 1) {
-      currentIndex++;
-      updateCarousel();
-    }
-  });
-
-  // Initialize
-  updateCarousel();
-</script>
