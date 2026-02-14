@@ -21,20 +21,16 @@ import { carouselPrompts } from '../content/siteCopy';
             >
               <div class="flip-card-inner">
                 <!-- Front side -->
-                <div class="card-outer card-front-outer">
-                  <div class="card-inner">
-                    <span class="card-label">Question</span>
-                    <p class="card-text">{prompt.front}</p>
-                    <span class="card-helper">Click to reveal a follow-up</span>
-                  </div>
+                <div class="card-face card-front">
+                  <span class="card-label">Question</span>
+                  <p class="card-text">{prompt.front}</p>
+                  <span class="card-helper">Click to reveal a follow-up</span>
                 </div>
                 <!-- Back side -->
-                <div class="card-outer card-back-outer">
-                  <div class="card-inner">
-                    <span class="card-label">Follow-up</span>
-                    <p class="card-text">{prompt.back}</p>
-                    <img src={prompt.icon} alt="" class="card-icon" aria-hidden="true" />
-                  </div>
+                <div class="card-face card-back">
+                  <span class="card-label">Follow-up</span>
+                  <p class="card-text">{prompt.back}</p>
+                  <img src={prompt.icon} alt="" class="card-icon" aria-hidden="true" />
                 </div>
               </div>
             </div>
@@ -93,30 +89,28 @@ import { carouselPrompts } from '../content/siteCopy';
     align-items: center;
   }
 
-  /* Tarot-style card container */
+  /* Card container */
   .flip-card {
     min-width: 100%;
-    max-width: 520px;
-    aspect-ratio: 3 / 4;
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 5 / 6;
     margin: 0 auto;
     perspective: 1000px;
     cursor: pointer;
     outline: none;
-    display: flex;
-    justify-content: center;
   }
 
   .flip-card:focus-visible {
     outline: 3px solid var(--focus);
     outline-offset: 8px;
-    border-radius: 20px;
+    border-radius: 16px;
   }
 
   .flip-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    max-width: 480px;
     transition: transform 0.6s ease;
     transform-style: preserve-3d;
   }
@@ -125,59 +119,39 @@ import { carouselPrompts } from '../content/siteCopy';
     transform: rotateY(180deg);
   }
 
-  /* Double border structure */
-  .card-outer {
+  /* Card faces - simplified structure */
+  .card-face {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    background: white;
-    border: 4px solid white;
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(64, 32, 77, 0.15);
-  }
-
-  .card-inner {
-    width: 100%;
-    height: 100%;
-    border: 2px solid var(--brand-1);
     border-radius: 16px;
-    padding: 3rem 2.5rem;
+    padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
-    /* Subtle texture with radial gradient */
-    background:
-      radial-gradient(circle at 30% 30%, rgba(255, 250, 246, 0.3) 0%, transparent 50%),
-      #F2F1EE;
+    box-shadow: 0 4px 16px rgba(64, 32, 77, 0.12);
   }
 
-  .card-front-outer .card-inner {
-    background:
-      radial-gradient(circle at 30% 30%, rgba(255, 250, 246, 0.3) 0%, transparent 50%),
-      #F2F1EE;
+  .card-front {
+    background: white;
+    border: 2px solid var(--brand-1);
   }
 
-  .card-back-outer {
+  .card-back {
+    background: var(--ink-2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     transform: rotateY(180deg);
-  }
-
-  .card-back-outer .card-inner {
-    background:
-      radial-gradient(circle at 30% 30%, rgba(83, 54, 96, 0.1) 0%, transparent 50%),
-      var(--ink-2);
-    border-color: rgba(255, 255, 255, 0.2);
   }
 
   /* Card labels */
   .card-label {
     position: absolute;
-    top: 1.5rem;
+    top: 1.25rem;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -185,45 +159,45 @@ import { carouselPrompts } from '../content/siteCopy';
     opacity: 0.7;
   }
 
-  .card-back-outer .card-label {
+  .card-back .card-label {
     color: rgba(255, 255, 255, 0.8);
   }
 
   /* Card text */
   .card-text {
-    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+    font-size: clamp(1.0625rem, 2.2vw, 1.25rem);
     font-weight: 600;
     color: var(--ink);
     text-align: center;
     margin: 0;
-    line-height: 1.6;
-    max-width: 100%;
+    line-height: 1.5;
   }
 
-  .card-back-outer .card-text {
+  .card-back .card-text {
     color: white;
     font-weight: 400;
-    line-height: 1.7;
+    line-height: 1.6;
   }
 
   /* Helper text on front */
   .card-helper {
     position: absolute;
-    bottom: 1.5rem;
+    bottom: 1.25rem;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     color: var(--ink-muted);
     opacity: 0.7;
+    white-space: nowrap;
   }
 
   /* Icon on back */
   .card-icon {
-    width: 80px;
-    height: 80px;
-    margin-top: 1.5rem;
+    width: 70px;
+    height: 70px;
+    margin-top: 1.25rem;
     display: block;
-    opacity: 0.9;
+    opacity: 0.85;
   }
 
   /* Navigation buttons */
@@ -293,22 +267,28 @@ import { carouselPrompts } from '../content/siteCopy';
     outline-offset: 2px;
   }
 
-  /* Mobile responsive */
+  /* Tablet responsive */
   @media (max-width: 768px) {
     .carousel-track-container {
       padding: 1.5rem 0.5rem;
     }
 
     .flip-card {
-      max-width: 400px;
+      max-width: 320px;
     }
 
-    .card-inner {
-      padding: 2.5rem 2rem;
+    .card-face {
+      padding: 2rem 1.75rem;
     }
 
     .card-text {
-      font-size: clamp(1rem, 4vw, 1.25rem);
+      font-size: clamp(1rem, 3.5vw, 1.125rem);
+    }
+
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      margin-top: 1rem;
     }
 
     .carousel-btn {
@@ -318,13 +298,46 @@ import { carouselPrompts } from '../content/siteCopy';
     }
   }
 
+  /* Mobile responsive */
   @media (max-width: 480px) {
-    .flip-card {
-      max-width: 320px;
+    .carousel-track-container {
+      padding: 1.25rem 0.25rem;
     }
 
-    .card-inner {
-      padding: 2rem 1.5rem;
+    .flip-card {
+      max-width: 280px;
+    }
+
+    .card-face {
+      padding: 1.75rem 1.5rem;
+      border-radius: 12px;
+    }
+
+    .card-label {
+      top: 1rem;
+      font-size: 0.625rem;
+    }
+
+    .card-text {
+      font-size: clamp(0.9375rem, 4vw, 1.0625rem);
+      line-height: 1.5;
+    }
+
+    .card-helper {
+      bottom: 1rem;
+      font-size: 0.6875rem;
+    }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      margin-top: 0.875rem;
+    }
+
+    .carousel-btn {
+      width: 32px;
+      height: 32px;
+      font-size: 1.125rem;
     }
   }
 
@@ -338,17 +351,17 @@ import { carouselPrompts } from '../content/siteCopy';
       transform: none;
     }
 
-    .flip-card.flipped .card-front-outer {
+    .flip-card.flipped .card-front {
       opacity: 0;
       pointer-events: none;
     }
 
-    .flip-card:not(.flipped) .card-back-outer {
+    .flip-card:not(.flipped) .card-back {
       opacity: 0;
       pointer-events: none;
     }
 
-    .card-back-outer {
+    .card-back {
       transform: none;
     }
   }
