@@ -1,0 +1,253 @@
+---
+import { carouselPrompts } from '../content/siteCopy';
+---
+
+<section class="carousel-section">
+  <div class="container">
+    <h2>Common Questions We Help You Answer</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn carousel-btn-prev" aria-label="Previous card">‹</button>
+      <div class="carousel-track-container">
+        <div class="carousel-track">
+          {carouselPrompts.map((prompt) => (
+            <div class="flip-card" data-card-id={prompt.id}>
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <p>{prompt.front}</p>
+                </div>
+                <div class="flip-card-back">
+                  <p>{prompt.back}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <button class="carousel-btn carousel-btn-next" aria-label="Next card">›</button>
+    </div>
+    <div class="carousel-dots">
+      {carouselPrompts.map((_, index) => (
+        <button class="carousel-dot" data-index={index} aria-label={`Go to card ${index + 1}`}></button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .carousel-section {
+    background: var(--color-bg-light);
+  }
+
+  .carousel-section h2 {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .carousel-track-container {
+    flex: 1;
+    overflow: hidden;
+    padding: var(--space-sm);
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .flip-card {
+    min-width: 100%;
+    height: 280px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .flip-card-front {
+    background: white;
+    border: 3px solid var(--color-primary);
+  }
+
+  .flip-card-front p {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 600;
+    color: var(--color-primary);
+    text-align: center;
+    margin: 0;
+  }
+
+  .flip-card-back {
+    background: var(--color-accent);
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-back p {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .carousel-btn {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .carousel-btn:hover {
+    background: var(--color-primary-dark);
+    transform: scale(1.1);
+  }
+
+  .carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+  }
+
+  .carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-border);
+    border: 2px solid var(--color-primary);
+    padding: 0;
+    transition: background 0.2s ease;
+  }
+
+  .carousel-dot.active {
+    background: var(--color-primary);
+  }
+
+  .carousel-dot:hover {
+    background: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+    }
+
+    .flip-card {
+      height: 240px;
+    }
+  }
+</style>
+
+<script>
+  // Carousel navigation
+  let currentIndex = 0;
+  const cards = document.querySelectorAll('.flip-card');
+  const track = document.querySelector('.carousel-track') as HTMLElement;
+  const dots = document.querySelectorAll('.carousel-dot');
+  const prevBtn = document.querySelector('.carousel-btn-prev') as HTMLButtonElement;
+  const nextBtn = document.querySelector('.carousel-btn-next') as HTMLButtonElement;
+
+  function updateCarousel() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    // Update dots
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+
+    // Update button states
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === cards.length - 1;
+  }
+
+  // Navigation buttons
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < cards.length - 1) {
+      currentIndex++;
+      updateCarousel();
+    }
+  });
+
+  // Dot navigation
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentIndex = index;
+      updateCarousel();
+    });
+  });
+
+  // Flip cards on click
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' && currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+    } else if (e.key === 'ArrowRight' && currentIndex < cards.length - 1) {
+      currentIndex++;
+      updateCarousel();
+    }
+  });
+
+  // Initialize
+  updateCarousel();
+</script>

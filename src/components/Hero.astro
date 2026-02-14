@@ -1,0 +1,31 @@
+---
+import { hero } from '../content/siteCopy';
+---
+
+<section class="hero">
+  <div class="container">
+    <h1>{hero.heading}</h1>
+    <p class="tagline">{hero.tagline}</p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: white;
+    text-align: center;
+    padding: var(--space-2xl) 0;
+  }
+
+  .hero h1 {
+    color: white;
+    margin-bottom: var(--space-md);
+  }
+
+  .tagline {
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+</style>

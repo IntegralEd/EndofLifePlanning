@@ -1,0 +1,101 @@
+---
+import { misconceptions } from '../content/siteCopy';
+---
+
+<section class="misconceptions-section">
+  <div class="container">
+    <h2>Common Misconceptions About End of Life Planning</h2>
+    <div class="misconceptions-grid">
+      {misconceptions.map((item) => (
+        <div class="misconception-card">
+          <div class="myth">
+            <span class="icon">✗</span>
+            <h3>"{item.myth}"</h3>
+          </div>
+          <div class="reality">
+            <span class="icon">✓</span>
+            <p>{item.reality}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .misconceptions-section {
+    background: white;
+  }
+
+  .misconceptions-section h2 {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .misconceptions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .misconception-card {
+    background: var(--color-bg-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .misconception-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .myth {
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-md);
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .myth h3 {
+    color: #dc2626;
+    font-size: 1.125rem;
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  .myth .icon {
+    display: inline-block;
+    color: #dc2626;
+    font-size: 1.5rem;
+    margin-right: var(--space-xs);
+    font-weight: bold;
+  }
+
+  .reality {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+
+  .reality .icon {
+    color: #10b981;
+    font-size: 1.5rem;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .reality p {
+    color: var(--color-text);
+    font-weight: 500;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .misconceptions-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

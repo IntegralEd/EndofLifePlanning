@@ -1,0 +1,143 @@
+---
+import { mailingListCTA } from '../content/siteCopy';
+---
+
+<section class="mailing-list-section">
+  <div class="container">
+    <div class="cta-box">
+      <h2>{mailingListCTA.heading}</h2>
+      <p class="subheading">{mailingListCTA.subheading}</p>
+
+      <form
+        name="mailing-list"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="signup-form"
+      >
+        <!-- Netlify form detection -->
+        <input type="hidden" name="form-name" value="mailing-list" />
+
+        <!-- Honeypot field -->
+        <p class="visually-hidden">
+          <label>
+            Don't fill this out if you're human: <input name="bot-field" />
+          </label>
+        </p>
+
+        <div class="form-group">
+          <label for="email" class="visually-hidden">Email address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email address"
+            required
+            aria-required="true"
+          />
+          <button type="submit" class="btn-submit">{mailingListCTA.buttonText}</button>
+        </div>
+
+        <p class="privacy-note">{mailingListCTA.privacyNote}</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mailing-list-section {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .cta-box {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .mailing-list-section h2 {
+    color: white;
+    margin-bottom: var(--space-sm);
+  }
+
+  .subheading {
+    font-size: 1.125rem;
+    margin-bottom: var(--space-xl);
+    opacity: 0.95;
+  }
+
+  .signup-form {
+    margin-bottom: var(--space-md);
+  }
+
+  .form-group {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #email {
+    flex: 1;
+    min-width: 250px;
+    padding: 0.875rem 1.25rem;
+    font-size: 1rem;
+    border: 2px solid white;
+    border-radius: var(--radius-md);
+    background: white;
+    color: var(--color-text);
+    font-family: var(--font-sans);
+  }
+
+  #email:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+  }
+
+  #email::placeholder {
+    color: var(--color-text-light);
+  }
+
+  .btn-submit {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    transition: background 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .btn-submit:hover {
+    background: #c86a52;
+    transform: translateY(-2px);
+  }
+
+  .btn-submit:active {
+    transform: translateY(0);
+  }
+
+  .privacy-note {
+    font-size: 0.875rem;
+    opacity: 0.85;
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .form-group {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    #email {
+      width: 100%;
+    }
+
+    .btn-submit {
+      width: 100%;
+    }
+  }
+</style>

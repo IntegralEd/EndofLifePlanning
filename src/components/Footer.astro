@@ -1,0 +1,39 @@
+---
+import { footer } from '../content/siteCopy';
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <blockquote class="closing-quote">
+      "{footer.quote}"
+    </blockquote>
+    <p class="copyright">{footer.copyright}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-primary-dark);
+    color: white;
+    padding: var(--space-xl) 0 var(--space-lg);
+    text-align: center;
+  }
+
+  .closing-quote {
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    font-weight: 500;
+    margin-bottom: var(--space-lg);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    opacity: 0.95;
+  }
+
+  .copyright {
+    font-size: 0.875rem;
+    opacity: 0.75;
+    margin: 0;
+  }
+</style>
