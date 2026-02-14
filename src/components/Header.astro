@@ -1,0 +1,42 @@
+---
+// Header with WishesMadeClear logo
+---
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-content">
+      <img
+        src="/images/logo.png"
+        alt="WishesMadeClear"
+        class="site-logo"
+      />
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 0;
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .site-logo {
+    height: clamp(48px, 8vw, 80px);
+    width: auto;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .site-header {
+      padding: 1rem 0;
+    }
+  }
+</style>
