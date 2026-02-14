@@ -4,10 +4,9 @@
  */
 
 export const hero = {
-  heading: "End of Life Planning Workshops That Guide You to Make Your Wishes Clear",
-  tagline: "Guided, in-person workshops to help you put your wishes in writing.",
-  supportText: "We know talking about death is difficult. Sessions introduce topics and tasks mindfully, with space to process emotions.",
-  boundaryText: "We guide and educate. We do not provide legal or medical advice. If you want, we can refer you to licensed professionals to finalize documents."
+  heading: "Guided, in-person workshops to help you define your end of life wishes.",
+  subheading: "Talking about death is difficult. Workshop sessions introduce topics mindfully and create space to process emotions.",
+  boundaryText: "We facilitate and educate. We do not provide legal or medical advice."
 };
 
 export const carouselPrompts = [

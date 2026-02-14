@@ -4,7 +4,8 @@ import { carouselPrompts } from '../content/siteCopy';
 
 <section class="carousel-section">
   <div class="container">
-    <h2>Common Questions We Help You Answer</h2>
+    <h2>Can you Benefit from this Workshop?</h2>
+    <p class="carousel-intro">Click on these common questions participants discuss and see how you might respond...</p>
     <div class="carousel-container">
       <button class="carousel-btn carousel-btn-prev" aria-label="Previous card">‹</button>
       <div class="carousel-track-container">
@@ -35,12 +36,21 @@ import { carouselPrompts } from '../content/siteCopy';
 
 <style>
   .carousel-section {
-    background: var(--bg-alt);
+    background: var(--bg);
   }
 
   .carousel-section h2 {
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .carousel-intro {
+    text-align: center;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    color: var(--ink-muted);
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
   }
 
   .carousel-container {
