@@ -1,0 +1,213 @@
+================================================================================
+WISHESMADECLEAR.COM - WEBSITE COPY
+================================================================================
+
+This file contains all text content on the website organized by page and section.
+To request changes, email this file with your edits clearly marked.
+
+Last updated: February 14, 2026
+
+================================================================================
+
+
+================================================================================
+HOME PAGE (/)
+================================================================================
+
+------------------------------------------------------------------------
+SECTION: Header Navigation
+------------------------------------------------------------------------
+Button text: "Sign Up for a Workshop"
+
+
+------------------------------------------------------------------------
+SECTION: Hero (Top banner with purple background)
+------------------------------------------------------------------------
+Main heading:
+"Guided, in-person workshops to help you define your end of life wishes."
+
+Subheading:
+"Talking about death is difficult. Workshop sessions introduce topics mindfully and create space to process emotions."
+
+Boundary statement (smaller text with border):
+"We facilitate and educate. We do not provide legal or medical advice."
+
+
+------------------------------------------------------------------------
+SECTION: Question Cards (Purple cards with click-to-reveal)
+------------------------------------------------------------------------
+Section heading:
+"Can you Benefit from this Workshop?"
+
+Section intro:
+"Click on these common questions participants discuss and see how you might respond..."
+
+CARD 1:
+Question: "If you were in a car accident tomorrow, who would make your medical decisions?"
+Follow-up: "Who would show up at the hospital? Would they all agree on what you would want?"
+
+CARD 2:
+Question: "If you were suddenly unable to speak or move, would anyone know your passwords?"
+Follow-up: "What about your bank accounts, email, cloud storage, and social media?"
+
+CARD 3:
+Question: "Do you know how much medical intervention you would want in a coma?"
+Follow-up: "Would the people closest to you agree about those choices?"
+
+CARD 4:
+Question: "If you and a co-parent were injured together, who would care for your children?"
+Follow-up: "Is that decision written down, or assumed?"
+
+CARD 5:
+Question: "Who would you trust with your personal journals or other private belongings?"
+Follow-up: "What if your kids or parents went through your secret stuff?"
+
+
+------------------------------------------------------------------------
+SECTION: Common Misconceptions
+------------------------------------------------------------------------
+(Note: This section exists in the code but may not be displayed on current site)
+
+MISCONCEPTION 1:
+Myth: "This is for retirement age"
+Reality: "Accidents and sudden illness can happen to anyone. If you are over 18 and have people you care about, you need a plan. Even a simple plan helps your family avoid confusion and conflict."
+
+MISCONCEPTION 2:
+Myth: "Only rich people need this"
+Reality: "Everyone has something. Bank accounts, a car, photos, passwords. Without clear instructions, even small things can get tied up or lost. Planning is for anyone who wants to make it easier on the people they leave behind."
+
+MISCONCEPTION 3:
+Myth: "My family knows what I want"
+Reality: "You might have talked about it. But if it is not written down, family members often disagree or second-guess. Clear written instructions remove the burden of guessing and give your loved ones permission to follow your wishes."
+
+MISCONCEPTION 4:
+Myth: "If I die young, there won't be much to sort out"
+Reality: "Young adults often have student loans, leases, online accounts, pets, and personal items with emotional value. Without a plan, parents or partners may not have legal access to handle these things quickly."
+
+
+------------------------------------------------------------------------
+SECTION: Services/Workshop Topics
+------------------------------------------------------------------------
+(Note: This section exists in the code but may not be displayed on current site)
+
+SERVICE 1:
+Title: "Medical Directives"
+Description: "Document your healthcare wishes, appoint a healthcare proxy, and clarify end-of-life care preferences."
+
+SERVICE 2:
+Title: "Will and Estate"
+Description: "Learn how to create or update your will, designate beneficiaries, and understand estate planning basics."
+
+SERVICE 3:
+Title: "Financial Accounts"
+Description: "Organize bank accounts, retirement funds, insurance policies, and create a master list for your family."
+
+SERVICE 4:
+Title: "Private Property"
+Description: "Create a plan for personal belongings, family heirlooms, and digital assets like photos and passwords."
+
+
+------------------------------------------------------------------------
+SECTION: Mailing List Call-to-Action
+------------------------------------------------------------------------
+(Note: This section exists in the code but may not be displayed on current site)
+
+Heading: "Get Workshop Updates"
+Subheading: "Join our mailing list to be notified about upcoming workshops in your area."
+Button text: "Sign Up"
+Privacy note: "We respect your privacy. Unsubscribe anytime."
+
+
+------------------------------------------------------------------------
+SECTION: Footer
+------------------------------------------------------------------------
+Quote: "The greatest gift you can give your loved ones is clarity about your wishes."
+Copyright: "© 2026 WishesMadeClear. All rights reserved."
+
+
+================================================================================
+SIGN UP PAGE (/signup)
+================================================================================
+
+------------------------------------------------------------------------
+SECTION: Page Header
+------------------------------------------------------------------------
+Page title (browser tab): "Sign Up for a Workshop - WishesMadeClear"
+
+Main heading:
+"Get Updates on Upcoming End of Life Planning Workshops"
+
+
+------------------------------------------------------------------------
+SECTION: Introduction Text
+------------------------------------------------------------------------
+Paragraph 1:
+"We're hosting workshops to help you document your wishes clearly. Sessions are available in person in Austin and Bastrop, or join us for a Zoom series from anywhere. These are small group workshops where you'll have space to work through each topic at your own pace."
+
+Paragraph 2:
+"Our in-person Austin workshops meet near Zilker in the 78704 area, and our Bastrop sessions are held in downtown Bastrop, Texas 78602. Whether you're local to Central Texas or joining remotely, you'll get the same guided support to create your advance directives and organize your estate planning documents."
+
+
+------------------------------------------------------------------------
+SECTION: Pilot Fee Notice (Green/sage highlighted box)
+------------------------------------------------------------------------
+"This is a pilot. We will collect a $100 registration fee which can be returned to you or donated upon completion of the workshop."
+
+
+------------------------------------------------------------------------
+SECTION: Sign Up Form
+------------------------------------------------------------------------
+Form section heading 1: "Contact Information"
+
+Email field label: "Email *"
+Email placeholder: "your@email.com"
+
+Phone field label: "Phone *"
+Phone placeholder: "(512) 555-1234"
+
+Form section heading 2: "Workshop Preference"
+Section note: "Select all that interest you"
+
+Checkbox options:
+- "In person Austin"
+- "In person Bastrop"
+- "Zoom"
+
+Form section heading 3 (optional field):
+Notes field label: "Questions or Notes (optional)"
+Notes placeholder: "Any questions or special needs we should know about?"
+
+Privacy note (above submit button):
+"We respect your privacy. We do not sell your information."
+
+Submit button text: "Submit"
+Submit button loading state: "Submitting..."
+
+
+------------------------------------------------------------------------
+SECTION: Success Message (shown after form submission)
+------------------------------------------------------------------------
+"Congratulations on taking this step towards making your wishes clear."
+
+
+------------------------------------------------------------------------
+SECTION: Error Message (shown if form fails)
+------------------------------------------------------------------------
+"There was a problem submitting your form. Please try again or email us directly."
+
+
+================================================================================
+END OF WEBSITE COPY
+================================================================================
+
+HOW TO REQUEST CHANGES:
+1. Make your edits directly in this file
+2. Add [CHANGE] at the beginning of any line you modify
+3. Email the edited file to your web developer
+4. Include a brief summary of changes at the top of your email
+
+Example:
+[CHANGE] Main heading:
+[CHANGE] "Updated heading text goes here."
+
+================================================================================
