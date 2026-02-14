@@ -11,7 +11,7 @@
 
 :root {
   /* Core backgrounds */
-  --bg: #FCFDDA;          /* warm linen cream */
+  --bg: #F2F1EE;          /* warm neutral matching logo */
   --bg-alt: #E0ECCB;      /* sage mist */
   --surface: #FFFFFF;     /* cards */
   --surface-2: #D2B4C3;   /* soft rose accent surface, use sparingly */
@@ -21,6 +21,7 @@
   --ink-2: #533660;       /* plum */
   --ink-link: #602543;    /* deep mulberry for links */
   --ink-muted: #6B5971;   /* muted text */
+  --ink-nav: #9E5553;     /* rose-mauve for nav links, matches wordmark */
 
   /* Brand accents */
   --brand-1: #40204D;     /* primary */
