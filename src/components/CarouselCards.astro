@@ -11,13 +11,30 @@ import { carouselPrompts } from '../content/siteCopy';
       <div class="carousel-track-container">
         <div class="carousel-track">
           {carouselPrompts.map((prompt) => (
-            <div class="flip-card" data-card-id={prompt.id}>
+            <div
+              class="flip-card"
+              data-card-id={prompt.id}
+              role="button"
+              tabindex="0"
+              aria-expanded="false"
+              aria-label={`Card ${prompt.id}: ${prompt.front}. Press Enter or Space to reveal follow-up.`}
+            >
               <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <p>{prompt.front}</p>
+                <!-- Front side -->
+                <div class="card-outer card-front-outer">
+                  <div class="card-inner">
+                    <span class="card-label">Question</span>
+                    <p class="card-text">{prompt.front}</p>
+                    <span class="card-helper">Click to reveal a follow-up</span>
+                  </div>
                 </div>
-                <div class="flip-card-back">
-                  <p>{prompt.back}</p>
+                <!-- Back side -->
+                <div class="card-outer card-back-outer">
+                  <div class="card-inner">
+                    <span class="card-label">Follow-up</span>
+                    <p class="card-text">{prompt.back}</p>
+                    <div class="card-icon" aria-hidden="true"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -57,7 +74,7 @@ import { carouselPrompts } from '../content/siteCopy';
     position: relative;
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
     max-width: 900px;
     margin: 0 auto;
   }
@@ -65,25 +82,41 @@ import { carouselPrompts } from '../content/siteCopy';
   .carousel-track-container {
     flex: 1;
     overflow: hidden;
-    padding: 1rem;
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
   }
 
   .carousel-track {
     display: flex;
     transition: transform 0.4s ease-in-out;
+    align-items: center;
   }
 
+  /* Tarot-style card container */
   .flip-card {
     min-width: 100%;
-    height: clamp(260px, 35vw, 300px);
+    max-width: 520px;
+    aspect-ratio: 3 / 4;
+    margin: 0 auto;
     perspective: 1000px;
     cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: center;
+  }
+
+  .flip-card:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 8px;
+    border-radius: 20px;
   }
 
   .flip-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
+    max-width: 480px;
     transition: transform 0.6s ease;
     transform-style: preserve-3d;
   }
@@ -92,92 +125,159 @@ import { carouselPrompts } from '../content/siteCopy';
     transform: rotateY(180deg);
   }
 
-  .flip-card-front,
-  .flip-card-back {
+  /* Double border structure */
+  .card-outer {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    background: white;
+    border: 4px solid white;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(64, 32, 77, 0.15);
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--brand-1);
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-card);
+    position: relative;
+    /* Subtle texture with radial gradient */
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255, 250, 246, 0.3) 0%, transparent 50%),
+      #F2F1EE;
   }
 
-  .flip-card-front {
-    background: var(--surface);
-    border: 2px solid var(--brand-1);
+  .card-front-outer .card-inner {
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255, 250, 246, 0.3) 0%, transparent 50%),
+      #F2F1EE;
   }
 
-  .flip-card-front p {
-    font-size: clamp(1.25rem, 3vw, 1.5rem);
+  .card-back-outer {
+    transform: rotateY(180deg);
+  }
+
+  .card-back-outer .card-inner {
+    background:
+      radial-gradient(circle at 30% 30%, rgba(83, 54, 96, 0.1) 0%, transparent 50%),
+      var(--ink-2);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Card labels */
+  .card-label {
+    position: absolute;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brand-1);
+    opacity: 0.7;
+  }
+
+  .card-back-outer .card-label {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Card text */
+  .card-text {
+    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
     font-weight: 600;
     color: var(--ink);
     text-align: center;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.6;
+    max-width: 100%;
   }
 
-  .flip-card-back {
-    background: var(--ink-2);
+  .card-back-outer .card-text {
     color: white;
-    transform: rotateY(180deg);
-  }
-
-  .flip-card-back p {
-    font-size: clamp(1.125rem, 2.5vw, 1.25rem);
-    text-align: center;
-    margin: 0;
-    line-height: 1.5;
-    font-style: italic;
     font-weight: 400;
+    line-height: 1.7;
   }
 
+  /* Helper text on front */
+  .card-helper {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8125rem;
+    color: var(--ink-muted);
+    opacity: 0.7;
+  }
+
+  /* Icon placeholder on back */
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    margin-top: 1.5rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Navigation buttons */
   .carousel-btn {
     background: var(--brand-1);
     color: white;
     border: none;
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    font-size: 2rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s ease, transform 0.15s ease;
+    transition: transform 0.2s ease, background 0.2s ease;
     flex-shrink: 0;
     font-weight: 400;
     line-height: 1;
+    cursor: pointer;
   }
 
   .carousel-btn:hover:not(:disabled) {
-    background: var(--ink-2);
-    transform: scale(1.08);
+    background: var(--brand-1);
+    transform: scale(1.1);
   }
 
   .carousel-btn:disabled {
     background: var(--brand-soft);
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
   }
 
+  .carousel-btn:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  /* Dot indicators */
   .carousel-dots {
     display: flex;
     justify-content: center;
-    gap: 0.75rem;
+    gap: 0.625rem;
     margin-top: 2rem;
   }
 
   .carousel-dot {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background: var(--surface);
+    background: transparent;
     border: 2px solid var(--brand-1);
     padding: 0;
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
+    cursor: pointer;
   }
 
   .carousel-dot.active {
@@ -185,36 +285,70 @@ import { carouselPrompts } from '../content/siteCopy';
   }
 
   .carousel-dot:hover {
-    background: var(--brand-2);
+    transform: scale(1.2);
   }
 
+  .carousel-dot:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  /* Mobile responsive */
   @media (max-width: 768px) {
-    .carousel-btn {
-      width: 40px;
-      height: 40px;
-      font-size: 1.5rem;
+    .carousel-track-container {
+      padding: 1.5rem 0.5rem;
     }
 
     .flip-card {
-      height: 260px;
+      max-width: 400px;
+    }
+
+    .card-inner {
+      padding: 2.5rem 2rem;
+    }
+
+    .card-text {
+      font-size: clamp(1rem, 4vw, 1.25rem);
+    }
+
+    .carousel-btn {
+      width: 36px;
+      height: 36px;
+      font-size: 1.25rem;
     }
   }
 
-  /* Reduced motion: instant reveal instead of flip */
+  @media (max-width: 480px) {
+    .flip-card {
+      max-width: 320px;
+    }
+
+    .card-inner {
+      padding: 2rem 1.5rem;
+    }
+  }
+
+  /* Reduced motion: instant reveal */
   @media (prefers-reduced-motion: reduce) {
     .flip-card-inner {
-      transition: none;
+      transition: opacity 0.2s ease;
     }
 
-    .flip-card.flipped .flip-card-front {
-      display: none;
+    .flip-card.flipped .flip-card-inner {
+      transform: none;
     }
 
-    .flip-card:not(.flipped) .flip-card-back {
-      display: none;
+    .flip-card.flipped .card-front-outer {
+      opacity: 0;
+      pointer-events: none;
     }
 
-    .flip-card-back {
+    .flip-card:not(.flipped) .card-back-outer {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .card-back-outer {
       transform: none;
     }
   }
@@ -265,15 +399,34 @@ import { carouselPrompts } from '../content/siteCopy';
     });
   });
 
-  // Flip cards on click
+  // Flip card interaction with keyboard support
   cards.forEach((card) => {
-    card.addEventListener('click', () => {
+    const flipCard = (e: Event) => {
+      const isFlipped = card.classList.contains('flipped');
       card.classList.toggle('flipped');
+      card.setAttribute('aria-expanded', String(!isFlipped));
+    };
+
+    // Click
+    card.addEventListener('click', flipCard);
+
+    // Keyboard (Enter and Space)
+    card.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        flipCard(e);
+      }
     });
   });
 
-  // Keyboard navigation
+  // Carousel keyboard navigation (arrows)
   document.addEventListener('keydown', (e) => {
+    // Only navigate if not focused on a card
+    const activeElement = document.activeElement;
+    if (activeElement && activeElement.classList.contains('flip-card')) {
+      return;
+    }
+
     if (e.key === 'ArrowLeft' && currentIndex > 0) {
       currentIndex--;
       updateCarousel();
