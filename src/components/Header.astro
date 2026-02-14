@@ -1,16 +1,10 @@
 ---
-// Unified header with logo and navigation
-const navItems = [
-  { label: 'Questions', href: '#questions' },
-  { label: 'Misconceptions', href: '#misconceptions' },
-  { label: 'What We Cover', href: '#services' },
-  { label: 'Sign Up for a Workshop', href: '/signup' },
-];
+// Simple header: full-height logo left, single signup link right
 ---
 
 <header class="site-header">
   <div class="header-container">
-    <a href="/" class="logo-link">
+    <a href="/" class="logo-link" aria-label="WishesMadeClear Home">
       <img
         src="/images/logo.png"
         alt="WishesMadeClear - End of Life Planning Workshops"
@@ -18,21 +12,7 @@ const navItems = [
       />
     </a>
 
-    <nav class="site-nav" aria-label="Main navigation">
-      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-
-      <ul class="nav-menu" id="nav-menu">
-        {navItems.map((item) => (
-          <li class="nav-item">
-            <a href={item.href} class="nav-link">{item.label}</a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <a href="/signup" class="signup-link">Sign Up for a Workshop</a>
   </div>
 </header>
 
@@ -47,14 +27,14 @@ const navItems = [
   }
 
   .header-container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0.75rem 1.25rem;
+    padding: 1rem 1.25rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
-    min-height: 80px;
+    min-height: 100px;
   }
 
   .logo-link {
@@ -65,175 +45,60 @@ const navItems = [
   }
 
   .site-logo {
-    height: 64px;
+    height: 100%;
+    max-height: 80px;
     width: auto;
     display: block;
   }
 
-  /* Navigation */
-  .site-nav {
-    display: flex;
-    align-items: center;
-  }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-  }
-
-  .hamburger-line {
-    width: 24px;
-    height: 3px;
-    background: var(--ink);
-    border-radius: 2px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
-
-  .hamburger[aria-expanded="true"] .hamburger-line:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .hamburger[aria-expanded="true"] .hamburger-line:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger[aria-expanded="true"] .hamburger-line:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-
-  .nav-menu {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
-  }
-
-  .nav-item {
-    margin: 0;
-  }
-
-  .nav-link {
+  .signup-link {
     color: var(--ink-nav);
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
-    padding: 0.5rem 0.75rem;
-    display: block;
-    border-radius: var(--radius-sm);
-    transition: color 0.2s ease, background 0.2s ease;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--ink-nav);
+    transition: all 0.2s ease;
+    white-space: nowrap;
   }
 
-  .nav-link:hover {
-    color: #7A3F3D;
-    background: rgba(158, 85, 83, 0.08);
+  .signup-link:hover {
+    color: var(--surface);
+    background: var(--ink-nav);
     text-decoration: none;
   }
 
-  .nav-link:focus-visible {
+  .signup-link:focus-visible {
     outline: 3px solid var(--focus);
     outline-offset: 2px;
   }
 
-  /* Mobile styles */
+  /* Mobile responsive */
   @media (max-width: 768px) {
     .header-container {
-      min-height: 64px;
+      min-height: 80px;
+      padding: 0.75rem 1rem;
     }
 
     .site-logo {
-      height: 48px;
+      max-height: 60px;
     }
 
-    .hamburger {
-      display: flex;
+    .signup-link {
+      font-size: 0.875rem;
+      padding: 0.625rem 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header-container {
+      gap: 1rem;
     }
 
-    .nav-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: var(--bg);
-      flex-direction: column;
-      gap: 0;
-      padding: 0;
-      box-shadow: var(--shadow-card);
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      border-bottom: 0;
-    }
-
-    .nav-menu.open {
-      max-height: 350px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-item {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-item:last-child {
-      border-bottom: none;
-    }
-
-    .nav-link {
-      padding: 1rem 1.25rem;
-      border-radius: 0;
+    .signup-link {
+      font-size: 0.8125rem;
+      padding: 0.5rem 0.75rem;
     }
   }
 </style>
-
-<script>
-  // Hamburger menu toggle
-  const hamburger = document.querySelector('.hamburger');
-  const navMenu = document.querySelector('.nav-menu');
-
-  if (hamburger && navMenu) {
-    hamburger.addEventListener('click', () => {
-      const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-      hamburger.setAttribute('aria-expanded', String(!isExpanded));
-      navMenu.classList.toggle('open');
-    });
-
-    // Close menu when clicking a link
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.setAttribute('aria-expanded', 'false');
-        navMenu.classList.remove('open');
-      });
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!hamburger.contains(e.target as Node) && !navMenu.contains(e.target as Node)) {
-        hamburger.setAttribute('aria-expanded', 'false');
-        navMenu.classList.remove('open');
-      }
-    });
-  }
-
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const href = this.getAttribute('href');
-      if (href && href !== '#') {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      }
-    });
-  });
-</script>

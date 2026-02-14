@@ -11,7 +11,7 @@
 
 :root {
   /* Core backgrounds */
-  --bg: #F2F1EE;          /* warm neutral matching logo */
+  --bg: #FFFAF6;          /* peachy cream matching logo transparent bg */
   --bg-alt: #E0ECCB;      /* sage mist */
   --surface: #FFFFFF;     /* cards */
   --surface-2: #D2B4C3;   /* soft rose accent surface, use sparingly */
