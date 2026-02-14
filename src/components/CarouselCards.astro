@@ -35,19 +35,19 @@ import { carouselPrompts } from '../content/siteCopy';
 
 <style>
   .carousel-section {
-    background: var(--color-bg-light);
+    background: var(--bg-alt);
   }
 
   .carousel-section h2 {
     text-align: center;
-    margin-bottom: var(--space-xl);
+    margin-bottom: 2.5rem;
   }
 
   .carousel-container {
     position: relative;
     display: flex;
     align-items: center;
-    gap: var(--space-md);
+    gap: 1.5rem;
     max-width: 900px;
     margin: 0 auto;
   }
@@ -55,7 +55,7 @@ import { carouselPrompts } from '../content/siteCopy';
   .carousel-track-container {
     flex: 1;
     overflow: hidden;
-    padding: var(--space-sm);
+    padding: 1rem;
   }
 
   .carousel-track {
@@ -74,7 +74,7 @@ import { carouselPrompts } from '../content/siteCopy';
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s;
+    transition: transform 0.6s ease;
     transform-style: preserve-3d;
   }
 
@@ -91,39 +91,40 @@ import { carouselPrompts } from '../content/siteCopy';
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-lg);
+    padding: 2rem;
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-card);
   }
 
   .flip-card-front {
-    background: white;
-    border: 3px solid var(--color-primary);
+    background: var(--surface);
+    border: 2px solid var(--brand-1);
   }
 
   .flip-card-front p {
-    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-size: clamp(1.25rem, 3vw, 1.625rem);
     font-weight: 600;
-    color: var(--color-primary);
+    color: var(--ink);
     text-align: center;
     margin: 0;
+    font-family: var(--font-head);
   }
 
   .flip-card-back {
-    background: var(--color-accent);
+    background: var(--sage-dark);
     color: white;
     transform: rotateY(180deg);
   }
 
   .flip-card-back p {
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     text-align: center;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .carousel-btn {
-    background: var(--color-primary);
+    background: var(--brand-1);
     color: white;
     border: none;
     border-radius: 50%;
@@ -133,43 +134,46 @@ import { carouselPrompts } from '../content/siteCopy';
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s ease, transform 0.2s ease;
+    transition: background 0.2s ease, transform 0.15s ease;
     flex-shrink: 0;
+    font-weight: 400;
+    line-height: 1;
   }
 
-  .carousel-btn:hover {
-    background: var(--color-primary-dark);
-    transform: scale(1.1);
+  .carousel-btn:hover:not(:disabled) {
+    background: var(--ink-2);
+    transform: scale(1.08);
   }
 
   .carousel-btn:disabled {
-    opacity: 0.3;
+    background: var(--brand-soft);
+    opacity: 0.5;
     cursor: not-allowed;
   }
 
   .carousel-dots {
     display: flex;
     justify-content: center;
-    gap: var(--space-sm);
-    margin-top: var(--space-lg);
+    gap: 0.75rem;
+    margin-top: 2rem;
   }
 
   .carousel-dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: var(--color-border);
-    border: 2px solid var(--color-primary);
+    background: var(--surface);
+    border: 2px solid var(--brand-1);
     padding: 0;
     transition: background 0.2s ease;
   }
 
   .carousel-dot.active {
-    background: var(--color-primary);
+    background: var(--brand-1);
   }
 
   .carousel-dot:hover {
-    background: var(--color-primary);
+    background: var(--brand-2);
   }
 
   @media (max-width: 768px) {
@@ -181,6 +185,25 @@ import { carouselPrompts } from '../content/siteCopy';
 
     .flip-card {
       height: 240px;
+    }
+  }
+
+  /* Reduced motion: instant reveal instead of flip */
+  @media (prefers-reduced-motion: reduce) {
+    .flip-card-inner {
+      transition: none;
+    }
+
+    .flip-card.flipped .flip-card-front {
+      display: none;
+    }
+
+    .flip-card:not(.flipped) .flip-card-back {
+      display: none;
+    }
+
+    .flip-card-back {
+      transform: none;
     }
   }
 </style>

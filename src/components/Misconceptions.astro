@@ -24,43 +24,45 @@ import { misconceptions } from '../content/siteCopy';
 
 <style>
   .misconceptions-section {
-    background: white;
+    background: var(--surface);
   }
 
   .misconceptions-section h2 {
     text-align: center;
-    margin-bottom: var(--space-xl);
+    margin-bottom: 2.5rem;
   }
 
   .misconceptions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--space-lg);
+    gap: 2rem;
     max-width: 1000px;
     margin: 0 auto;
   }
 
   .misconception-card {
-    background: var(--color-bg-light);
+    background: var(--bg);
     border-radius: var(--radius-lg);
-    padding: var(--space-lg);
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 1.75rem;
+    box-shadow: var(--shadow-subtle);
+    border: 1px solid var(--border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
 
   .misconception-card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-card);
+    border-color: var(--border-strong);
   }
 
   .myth {
-    margin-bottom: var(--space-md);
-    padding-bottom: var(--space-md);
-    border-bottom: 2px solid var(--color-border);
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 2px solid var(--border);
   }
 
   .myth h3 {
-    color: #dc2626;
+    color: var(--error-muted);
     font-size: 1.125rem;
     font-weight: 600;
     font-style: italic;
@@ -68,27 +70,27 @@ import { misconceptions } from '../content/siteCopy';
 
   .myth .icon {
     display: inline-block;
-    color: #dc2626;
+    color: var(--error-muted);
     font-size: 1.5rem;
-    margin-right: var(--space-xs);
+    margin-right: 0.5rem;
     font-weight: bold;
   }
 
   .reality {
     display: flex;
-    gap: var(--space-sm);
+    gap: 0.75rem;
     align-items: flex-start;
   }
 
   .reality .icon {
-    color: #10b981;
+    color: var(--sage-dark);
     font-size: 1.5rem;
     font-weight: bold;
     flex-shrink: 0;
   }
 
   .reality p {
-    color: var(--color-text);
+    color: var(--ink);
     font-weight: 500;
     margin: 0;
   }
@@ -96,6 +98,12 @@ import { misconceptions } from '../content/siteCopy';
   @media (max-width: 768px) {
     .misconceptions-grid {
       grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .misconception-card:hover {
+      transform: none;
     }
   }
 </style>

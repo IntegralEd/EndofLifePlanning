@@ -1,5 +1,6 @@
 /**
- * Base Styles - Minimal global resets and typography
+ * Base Styles - WishesMadeClear
+ * Global resets, typography, and foundational styles
  */
 
 * {
@@ -8,114 +9,164 @@
   box-sizing: border-box;
 }
 
-:root {
-  /* Typography */
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-size-base: 18px;
-  --line-height-base: 1.6;
-
-  /* Colors - Warm, approachable palette */
-  --color-primary: #2c5f7c;
-  --color-primary-dark: #1a3d4f;
-  --color-accent: #e07a5f;
-  --color-text: #2d3748;
-  --color-text-light: #4a5568;
-  --color-bg: #ffffff;
-  --color-bg-light: #f7fafc;
-  --color-border: #e2e8f0;
-
-  /* Spacing */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2rem;
-  --space-xl: 3rem;
-  --space-2xl: 4rem;
-
-  /* Layout */
-  --container-max: 1200px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+html,
+body {
+  height: 100%;
 }
 
 html {
-  font-size: var(--font-size-base);
+  font-size: 16px;
 }
 
 body {
-  font-family: var(--font-sans);
-  line-height: var(--line-height-base);
-  color: var(--color-text);
-  background: var(--color-bg);
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+main {
+  display: block;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-head);
+  color: var(--ink);
   line-height: 1.2;
-  font-weight: 700;
-  color: var(--color-primary-dark);
+  margin: 0 0 0.6em 0;
+  font-weight: 600;
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: var(--space-md);
+  font-size: var(--text-h1);
 }
 
 h2 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  margin-bottom: var(--space-md);
+  font-size: var(--text-h2);
 }
 
 h3 {
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
-  margin-bottom: var(--space-sm);
+  font-size: var(--text-h3);
 }
 
 p {
-  margin-bottom: var(--space-sm);
+  margin-bottom: 1rem;
+  max-width: var(--content-max);
 }
 
+/* Links */
 a {
-  color: var(--color-primary);
-  text-decoration: none;
+  color: var(--ink-link);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: var(--color-primary-dark);
-  text-decoration: underline;
+  color: var(--ink);
 }
 
-button {
+a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Buttons */
+button,
+input[type="submit"] {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
   cursor: pointer;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1.25rem;
+  border: 1px solid transparent;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.btn-primary {
+  background: var(--brand-1);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--ink-2);
+}
+
+.btn-primary:disabled {
+  background: var(--brand-soft);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: var(--brand-1);
+  color: var(--brand-1);
+}
+
+.btn-secondary:hover {
+  background: rgba(64, 32, 77, 0.06);
+}
+
+.btn-sage {
+  background: var(--sage-dark);
+  color: #FFFFFF;
+}
+
+.btn-sage:hover {
+  background: var(--olive-dark);
 }
 
 /* Container */
 .container {
-  max-width: var(--container-max);
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 var(--space-md);
+  padding: 0 1.25rem;
 }
 
 @media (min-width: 768px) {
   .container {
-    padding: 0 var(--space-lg);
+    padding: 0 2rem;
   }
+}
+
+/* Prose container for readable line length */
+.prose {
+  max-width: var(--content-max);
 }
 
 /* Section spacing */
 section {
-  padding: var(--space-2xl) 0;
+  padding: var(--section-padding) 0;
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-subtle);
 }
 
 /* Utility classes */

@@ -1,7 +1,78 @@
 /**
- * Theme Styles
- * Stub for future theming and component-specific styles
- * Can be replaced with IntegralThemes or custom design system
+ * WishesMadeClear Brand Theme
+ * Calm, caring, planful guidance with quiet confidence
+ *
+ * Positioning: Steady and respectful, practical not clinical,
+ * warm not sentimental, clear not euphemistic
  */
 
-/* Placeholder for future theme integration */
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@400;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Core backgrounds */
+  --bg: #FCFDDA;          /* warm linen cream */
+  --bg-alt: #E0ECCB;      /* sage mist */
+  --surface: #FFFFFF;     /* cards */
+  --surface-2: #D2B4C3;   /* soft rose accent surface, use sparingly */
+
+  /* Ink and headings */
+  --ink: #40204D;         /* deep plum */
+  --ink-2: #533660;       /* plum */
+  --ink-link: #602543;    /* deep mulberry for links */
+  --ink-muted: #6B5971;   /* muted text */
+
+  /* Brand accents */
+  --brand-1: #40204D;     /* primary */
+  --brand-2: #602543;     /* secondary */
+  --brand-soft: #A393AA;  /* light lavender accent */
+
+  /* Support colors */
+  --sage: #8EA468;
+  --sage-dark: #536C29;   /* safe for white text */
+  --olive-dark: #71732C;  /* safe for white text */
+  --sand: #D0D29E;
+  --error-muted: #76415C; /* error state, muted */
+
+  /* Borders and focus */
+  --border: rgba(64, 32, 77, 0.16);
+  --border-strong: rgba(64, 32, 77, 0.24);
+  --focus: #A393AA;
+
+  /* Typography */
+  --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-head: "Newsreader", Georgia, "Times New Roman", serif;
+
+  /* Type scale */
+  --text-h1: clamp(2.25rem, 4vw, 2.75rem);
+  --text-h2: clamp(1.75rem, 3vw, 2rem);
+  --text-h3: clamp(1.25rem, 2.5vw, 1.375rem);
+  --text-body: 1.125rem;
+  --text-small: 0.9375rem;
+
+  /* Spacing */
+  --radius: 16px;
+  --radius-sm: 12px;
+  --radius-lg: 18px;
+  --content-max: 68ch;
+
+  /* Section spacing */
+  --section-padding: clamp(3rem, 8vw, 5rem);
+  --section-padding-sm: clamp(2rem, 5vw, 3rem);
+
+  /* Shadows - subtle only */
+  --shadow-subtle: 0 2px 8px rgba(64, 32, 77, 0.08);
+  --shadow-card: 0 4px 12px rgba(64, 32, 77, 0.1);
+}
+
+/* Accessibility: Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
