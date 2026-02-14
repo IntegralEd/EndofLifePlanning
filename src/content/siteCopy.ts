@@ -13,32 +13,32 @@ export const carouselPrompts = [
   {
     id: 1,
     front: "If you were in a car accident tomorrow, who would make your medical decisions?",
-    back: "Who would show up at the hospital? Would they all agree on what you would want?"
+    back: "Who would show up at the hospital? Would they all agree on what you would want?",
+    icon: "/images/icons/card1-arguing.svg"
   },
   {
     id: 2,
     front: "If you were suddenly unable to speak or move, would anyone know your passwords?",
-    back: "What about your bank accounts, email, cloud storage, and social media?"
+    back: "What about your bank accounts, email, cloud storage, and social media?",
+    icon: "/images/icons/card2-passwords.svg"
   },
   {
     id: 3,
     front: "Do you know how much medical intervention you would want in a coma?",
-    back: "Would the people closest to you agree about those choices?"
+    back: "Would the people closest to you agree about those choices?",
+    icon: "/images/icons/card3-medical.svg"
   },
   {
     id: 4,
     front: "If you and a co-parent were injured together, who would care for your children?",
-    back: "Is that decision written down, or assumed?"
-  },
-  {
-    id: 5,
-    front: "If you died tomorrow, who would sort through your private belongings?",
-    back: "Is that the person you would choose?"
+    back: "Is that decision written down, or assumed?",
+    icon: "/images/icons/card4-coparents.svg"
   },
   {
     id: 6,
     front: "Who would you trust with your personal journals or other private belongings?",
-    back: "What if your kids or parents went through your secret stuff?"
+    back: "What if your kids or parents went through your secret stuff?",
+    icon: "/images/icons/card6-private.svg"
   }
 ];
 

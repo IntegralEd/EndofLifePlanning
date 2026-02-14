@@ -33,7 +33,7 @@ import { carouselPrompts } from '../content/siteCopy';
                   <div class="card-inner">
                     <span class="card-label">Follow-up</span>
                     <p class="card-text">{prompt.back}</p>
-                    <div class="card-icon" aria-hidden="true"></div>
+                    <img src={prompt.icon} alt="" class="card-icon" aria-hidden="true" />
                   </div>
                 </div>
               </div>
@@ -217,13 +217,13 @@ import { carouselPrompts } from '../content/siteCopy';
     opacity: 0.7;
   }
 
-  /* Icon placeholder on back */
+  /* Icon on back */
   .card-icon {
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
     margin-top: 1.5rem;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
+    display: block;
+    opacity: 0.9;
   }
 
   /* Navigation buttons */
