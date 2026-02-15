@@ -1,5 +1,5 @@
 ---
-// Simple header: full-height logo left, single signup link right
+// Header: Desktop shows signup link, mobile shows hamburger menu
 ---
 
 <header class="site-header">
@@ -12,8 +12,22 @@
       />
     </a>
 
-    <a href="/signup" class="signup-link">Sign Up for a Workshop</a>
+    <!-- Desktop navigation -->
+    <a href="/signup" class="signup-link desktop-nav">Sign Up for a Workshop</a>
+
+    <!-- Mobile hamburger button -->
+    <button class="hamburger-btn mobile-nav" aria-label="Toggle menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
   </div>
+
+  <!-- Mobile menu -->
+  <nav class="mobile-menu" aria-label="Mobile navigation">
+    <a href="/signup" class="mobile-menu-link">Sign Up</a>
+    <a href="mailto:info@wishesmadeclear.com" class="mobile-menu-link">Contact Us</a>
+  </nav>
 </header>
 
 <style>
@@ -51,6 +65,7 @@
     display: block;
   }
 
+  /* Desktop navigation */
   .signup-link {
     color: var(--ink-nav);
     text-decoration: none;
@@ -74,6 +89,92 @@
     outline-offset: 2px;
   }
 
+  /* Hamburger button */
+  .hamburger-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hamburger-line {
+    width: 28px;
+    height: 3px;
+    background: var(--ink-nav);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger-btn:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Hamburger animation when open */
+  .hamburger-btn.open .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger-btn.open .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-btn.open .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 4px 8px rgba(64, 32, 77, 0.08);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .mobile-menu.open {
+    max-height: 200px;
+  }
+
+  .mobile-menu-link {
+    padding: 1rem 1.25rem;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s ease;
+  }
+
+  .mobile-menu-link:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-menu-link:hover {
+    background: rgba(64, 32, 77, 0.05);
+  }
+
+  .mobile-menu-link:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: -3px;
+  }
+
+  /* Show/hide desktop vs mobile nav */
+  .mobile-nav {
+    display: none;
+  }
+
   /* Mobile responsive */
   @media (max-width: 768px) {
     .header-container {
@@ -85,20 +186,57 @@
       max-height: 60px;
     }
 
-    .signup-link {
-      font-size: 0.875rem;
-      padding: 0.625rem 1rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .header-container {
-      gap: 1rem;
+    .desktop-nav {
+      display: none;
     }
 
-    .signup-link {
-      font-size: 0.8125rem;
-      padding: 0.5rem 0.75rem;
+    .mobile-nav {
+      display: flex;
+    }
+
+    .mobile-menu {
+      display: flex;
     }
   }
 </style>
+
+<script>
+  // Mobile menu toggle
+  const hamburgerBtn = document.querySelector('.hamburger-btn');
+  const mobileMenu = document.querySelector('.mobile-menu');
+
+  if (hamburgerBtn && mobileMenu) {
+    hamburgerBtn.addEventListener('click', () => {
+      const isOpen = hamburgerBtn.classList.contains('open');
+
+      if (isOpen) {
+        hamburgerBtn.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        hamburgerBtn.classList.add('open');
+        mobileMenu.classList.add('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Close menu when clicking a link
+    const menuLinks = mobileMenu.querySelectorAll('.mobile-menu-link');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!hamburgerBtn.contains(e.target as Node) && !mobileMenu.contains(e.target as Node)) {
+        hamburgerBtn.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>
