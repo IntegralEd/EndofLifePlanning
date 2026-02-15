@@ -9,11 +9,17 @@ import { misconceptions } from '../content/siteCopy';
       {misconceptions.map((item) => (
         <div class="misconception-card">
           <div class="myth">
-            <span class="icon">✗</span>
+            <div class="icon-label-wrapper">
+              <img src="/images/icons/myth-unicorn.svg" alt="" class="icon" />
+              <span class="label">Myth</span>
+            </div>
             <h3>"{item.myth}"</h3>
           </div>
           <div class="reality">
-            <span class="icon">✓</span>
+            <div class="icon-label-wrapper">
+              <img src="/images/icons/reality-tree.svg" alt="" class="icon" />
+              <span class="label">Reality</span>
+            </div>
             <p>{item.reality}</p>
           </div>
         </div>
@@ -55,9 +61,32 @@ import { misconceptions } from '../content/siteCopy';
     border-color: var(--border-strong);
   }
 
+  .icon-label-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .icon-label-wrapper .icon {
+    width: 60px;
+    height: 60px;
+    display: block;
+  }
+
+  .icon-label-wrapper .label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-muted);
+    opacity: 0.6;
+  }
+
   .myth {
-    margin-bottom: 1.25rem;
-    padding-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
     border-bottom: 2px solid var(--border);
   }
 
@@ -66,34 +95,22 @@ import { misconceptions } from '../content/siteCopy';
     font-size: 1.125rem;
     font-weight: 600;
     font-style: normal;
-  }
-
-  .myth .icon {
-    display: inline-block;
-    color: var(--brand-soft);
-    font-size: 1.5rem;
-    margin-right: 0.5rem;
-    font-weight: bold;
-    opacity: 0.8;
+    text-align: left;
+    margin: 0;
+    line-height: 1.6;
   }
 
   .reality {
     display: flex;
-    gap: 0.75rem;
-    align-items: flex-start;
-  }
-
-  .reality .icon {
-    color: var(--sage-dark);
-    font-size: 1.5rem;
-    font-weight: bold;
-    flex-shrink: 0;
+    flex-direction: column;
   }
 
   .reality p {
     color: var(--ink);
     font-weight: 500;
     margin: 0;
+    text-align: left;
+    line-height: 1.7;
   }
 
   @media (max-width: 768px) {
