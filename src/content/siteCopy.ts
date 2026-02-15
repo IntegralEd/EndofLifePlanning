@@ -36,8 +36,8 @@ export const carouselPrompts = [
   },
   {
     id: 5,
-    front: "Who would you trust with your personal journals or other private belongings?",
-    back: "Are they the people you would choose to sort through your most personal belongings?",
+    front: "Who would you trust with your personal belongings?",
+    back: "Do you want your kids or parents to find your private things, like journals?",
     icon: "/images/icons/card6-private.svg"
   },
   {
