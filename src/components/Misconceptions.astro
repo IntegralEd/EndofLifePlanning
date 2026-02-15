@@ -39,10 +39,10 @@ import { misconceptions } from '../content/siteCopy';
   }
 
   .misconceptions-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 1.5rem;
-    max-width: 1000px;
+    max-width: 100%;
     margin: 0 auto;
   }
 
@@ -55,7 +55,7 @@ import { misconceptions } from '../content/siteCopy';
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     display: flex;
     flex-direction: column;
-    min-height: 400px;
+    width: 100%;
   }
 
   .misconception-card:hover {
@@ -98,8 +98,9 @@ import { misconceptions } from '../content/siteCopy';
     font-size: 1.125rem;
     font-weight: 600;
     font-style: normal;
-    text-align: justify;
+    text-align: left;
     margin: 0;
+    line-height: 1.6;
   }
 
   .reality {
@@ -112,20 +113,10 @@ import { misconceptions } from '../content/siteCopy';
     color: var(--ink);
     font-weight: 500;
     margin: 0;
-    text-align: justify;
+    text-align: left;
+    line-height: 1.7;
   }
 
-  @media (max-width: 768px) {
-    .misconceptions-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .misconceptions-grid {
-      grid-template-columns: 1fr;
-    }
-  }
 
   @media (prefers-reduced-motion: reduce) {
     .misconception-card {
