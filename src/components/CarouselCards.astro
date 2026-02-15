@@ -20,11 +20,6 @@ import { carouselPrompts } from '../content/siteCopy';
             <div class="qa-card-icon-wrapper">
               <img src={prompt.icon} alt="" class="qa-card-icon" aria-hidden="true" />
             </div>
-            <button class="qa-card-flip-back" aria-label="Flip back to question">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
           </div>
         </details>
       ))}
@@ -192,34 +187,9 @@ import { carouselPrompts } from '../content/siteCopy';
     opacity: 0.85;
   }
 
-  /* Flip back button */
-  .qa-card-flip-back {
-    position: absolute;
-    bottom: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* Card body is clickable to flip back */
+  .qa-card-body {
     cursor: pointer;
-    transition: all 0.2s ease;
-    color: white;
-  }
-
-  .qa-card-flip-back:hover {
-    background: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.6);
-    transform: translateX(-50%) scale(1.1);
-  }
-
-  .qa-card-flip-back:focus-visible {
-    outline: 3px solid var(--focus);
-    outline-offset: 2px;
   }
 
   /* Focus state */
@@ -305,38 +275,17 @@ import { carouselPrompts } from '../content/siteCopy';
 </style>
 
 <script>
-  // Handle flip-back buttons
-  const flipBackButtons = document.querySelectorAll('.qa-card-flip-back');
-
-  flipBackButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      // Find the parent details element
-      const detailsElement = button.closest('details');
-      if (detailsElement) {
-        detailsElement.open = false;
-      }
-    });
-  });
-
-  // On mobile, allow tapping the card body to flip back
+  // Allow clicking anywhere on card body to flip back
   const cardBodies = document.querySelectorAll('.qa-card-body');
 
   cardBodies.forEach(body => {
     body.addEventListener('click', (e) => {
-      // Only on mobile (touch devices)
-      if ('ontouchstart' in window) {
-        // Don't close if clicking the flip button (already handled above)
-        if ((e.target as HTMLElement).closest('.qa-card-flip-back')) {
-          return;
-        }
+      e.preventDefault();
+      e.stopPropagation();
 
-        const detailsElement = body.closest('details');
-        if (detailsElement) {
-          detailsElement.open = false;
-        }
+      const detailsElement = body.closest('details');
+      if (detailsElement) {
+        detailsElement.open = false;
       }
     });
   });
