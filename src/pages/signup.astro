@@ -9,16 +9,16 @@ import Footer from '../components/Footer.astro';
   <main>
     <section class="signup-section">
       <div class="signup-container">
-        <h1>Get Updates on Upcoming End of Life Planning Workshops</h1>
+        <h1>Upcoming End of Life Planning Workshops</h1>
 
         <div class="intro-text">
-          <p>We're hosting workshops to help you document your wishes clearly. Sessions are available in person in Austin and Bastrop, or join us for a Zoom series from anywhere. These are small group workshops where you'll have space to work through each topic at your own pace.</p>
+          <p>We're hosting workshops to help you think through, document, and communicate your wishes with your loved ones. Sessions are available in person in Austin and Bastrop, or join us for a Zoom series from anywhere. These small group workshops provide space to work through each topic at your own pace.</p>
 
-          <p>Our in-person Austin workshops meet near Zilker in the 78704 area, and our Bastrop sessions are held in downtown Bastrop, Texas 78602. Whether you're local to Central Texas or joining remotely, you'll get the same guided support to create your advance directives and organize your estate planning documents. We facilitate and educate. We do not provide legal or medical advice.</p>
+          <p>Our in-person Austin workshops meet near Zilker in the 78704 area, and our Bastrop sessions are held in downtown Bastrop, Texas 78602. Whether you're local to Central Texas or joining remotely, you'll get the same guided support to clarify your advance directives and organize your estate planning documents.</p>
         </div>
 
         <div class="pilot-fee-notice">
-          <p>This is a pilot. We will collect a $100 registration fee which can be returned to you or donated upon completion of the workshop.</p>
+          <p>This is a pilot session being offered in Bastrop on Thursday nights from 6:30-8:30pm (April 2, 9, 16 and 23). A $100 registration fee will be collected to reserve your spot. The fee will be returned to you upon completion of the workshop.</p>
         </div>
 
         <form action="https://api.web3forms.com/submit" method="POST" class="signup-form" id="signup-form">
@@ -99,11 +99,11 @@ import Footer from '../components/Footer.astro';
           <p class="privacy-note">We respect your privacy. We do not sell your information.</p>
 
           <!-- Submit Button -->
-          <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+          <button type="submit" class="btn btn-primary btn-submit">Reserve</button>
 
           <!-- Success Message (hidden by default) -->
           <div id="success-message" class="success-message" style="display: none;">
-            <p>Congratulations on taking this step towards making your wishes clear.</p>
+            <p>Congratulations on taking this step towards making your wishes clear. We will contact you soon with next steps</p>
           </div>
         </form>
       </div>
@@ -328,7 +328,7 @@ import Footer from '../components/Footer.astro';
         // Re-enable button
         if (submitButton) {
           submitButton.disabled = false;
-          submitButton.textContent = 'Submit';
+          submitButton.textContent = 'Reserve';
         }
       }
     });

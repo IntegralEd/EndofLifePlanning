@@ -6,6 +6,7 @@ import { hero } from '../content/siteCopy';
   <div class="container">
     <h1>{hero.heading}</h1>
     <h2 class="subheading">{hero.subheading}</h2>
+    <p class="boundary-statement">{hero.boundaryStatement}</p>
   </div>
 </section>
 
@@ -31,7 +32,21 @@ import { hero } from '../content/siteCopy';
     font-weight: 400;
     opacity: 0.95;
     max-width: 700px;
-    margin: 0 auto;
+    margin: 0 auto 2rem;
     line-height: 1.6;
+  }
+
+  .boundary-statement {
+    color: white;
+    font-family: var(--font-body);
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 400;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: var(--radius-md);
+    line-height: 1.5;
   }
 </style>
