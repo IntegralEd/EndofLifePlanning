@@ -1,45 +1,12 @@
 ---
-import { mailingListCTA } from '../content/siteCopy';
 ---
 
 <section class="mailing-list-section">
   <div class="container">
     <div class="cta-box">
-      <h2>{mailingListCTA.heading}</h2>
-      <p class="subheading">{mailingListCTA.subheading}</p>
-
-      <form
-        name="mailing-list"
-        method="POST"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
-        class="signup-form"
-      >
-        <!-- Netlify form detection -->
-        <input type="hidden" name="form-name" value="mailing-list" />
-
-        <!-- Honeypot field -->
-        <p class="visually-hidden">
-          <label>
-            Don't fill this out if you're human: <input name="bot-field" />
-          </label>
-        </p>
-
-        <div class="form-group">
-          <label for="email" class="visually-hidden">Email address</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter your email address"
-            required
-            aria-required="true"
-          />
-          <button type="submit" class="btn-submit">{mailingListCTA.buttonText}</button>
-        </div>
-
-        <p class="privacy-note">{mailingListCTA.privacyNote}</p>
-      </form>
+      <h2>Ready to Get Started?</h2>
+      <p class="subheading">Join an upcoming workshop to clarify and document your end of life wishes.</p>
+      <a href="/signup" class="btn-cta">View Upcoming Workshops</a>
     </div>
   </div>
 </section>
@@ -63,86 +30,39 @@ import { mailingListCTA } from '../content/siteCopy';
 
   .subheading {
     font-size: 1.125rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     opacity: 0.95;
   }
 
-  .signup-form {
-    margin-bottom: 1.5rem;
-  }
-
-  .form-group {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  #email {
-    flex: 1;
-    min-width: 250px;
-    padding: 0.875rem 1.25rem;
-    font-size: 1rem;
-    border: 2px solid white;
-    border-radius: var(--radius-sm);
-    background: white;
-    color: var(--ink);
-    font-family: var(--font-body);
-  }
-
-  #email:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px var(--brand-soft);
-  }
-
-  #email::placeholder {
-    color: var(--ink-muted);
-  }
-
-  .btn-submit {
-    padding: 0.875rem 2rem;
-    font-size: 1rem;
+  .btn-cta {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
     font-weight: 600;
     background: var(--sage-dark);
     color: white;
-    border: none;
-    border-radius: var(--radius-sm);
+    text-decoration: none;
+    border-radius: var(--radius-md);
     transition: background 0.2s ease, transform 0.15s ease;
-    white-space: nowrap;
   }
 
-  .btn-submit:hover {
+  .btn-cta:hover {
     background: var(--olive-dark);
     transform: translateY(-2px);
+    text-decoration: none;
   }
 
-  .btn-submit:active {
+  .btn-cta:active {
     transform: translateY(0);
   }
 
-  .privacy-note {
-    font-size: var(--text-small);
-    opacity: 0.9;
-    margin: 0;
-  }
-
-  @media (max-width: 600px) {
-    .form-group {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    #email {
-      width: 100%;
-    }
-
-    .btn-submit {
-      width: 100%;
-    }
+  .btn-cta:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 4px;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .btn-submit:hover {
+    .btn-cta:hover {
       transform: none;
     }
   }
