@@ -9,11 +9,11 @@ import { misconceptions } from '../content/siteCopy';
       {misconceptions.map((item) => (
         <div class="misconception-card">
           <div class="myth">
-            <span class="icon">✗</span>
+            <img src="/images/icons/myth-unicorn.svg" alt="Myth" class="icon" />
             <h3>"{item.myth}"</h3>
           </div>
           <div class="reality">
-            <span class="icon">✓</span>
+            <img src="/images/icons/reality-tree.svg" alt="Reality" class="icon" />
             <p>{item.reality}</p>
           </div>
         </div>
@@ -70,10 +70,10 @@ import { misconceptions } from '../content/siteCopy';
 
   .myth .icon {
     display: inline-block;
-    color: var(--brand-soft);
-    font-size: 1.5rem;
+    width: 20px;
+    height: 20px;
     margin-right: 0.5rem;
-    font-weight: bold;
+    vertical-align: middle;
     opacity: 0.8;
   }
 
@@ -84,10 +84,10 @@ import { misconceptions } from '../content/siteCopy';
   }
 
   .reality .icon {
-    color: var(--sage-dark);
-    font-size: 1.5rem;
-    font-weight: bold;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
+    margin-top: 0.125rem;
   }
 
   .reality p {
