@@ -44,7 +44,7 @@ export const carouselPrompts = [
     id: 6,
     front: "Talking about this might cause conflict in my family. Isn't it better to keep the peace and just put my wishes in a will?",
     back: "If you don't talk about it now, will your family argue about it later?",
-    icon: "/images/icons/card6-private.svg"
+    icon: "/images/icons/card6-conflict.svg"
   }
 ];
 
