@@ -5,8 +5,7 @@
 
 export const hero = {
   heading: "Guided, in-person workshops to help you define your end of life wishes.",
-  subheading: "Talking about death is difficult. Workshop sessions introduce topics mindfully and create space to process emotions.",
-  boundaryText: "We facilitate and educate. We do not provide legal or medical advice."
+  subheading: "Talking about death is difficult. Workshop sessions introduce topics mindfully and create space to make decisions at your own pace."
 };
 
 export const carouselPrompts = [

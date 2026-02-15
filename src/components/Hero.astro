@@ -6,7 +6,6 @@ import { hero } from '../content/siteCopy';
   <div class="container">
     <h1>{hero.heading}</h1>
     <h2 class="subheading">{hero.subheading}</h2>
-    <p class="boundary-text">{hero.boundaryText}</p>
   </div>
 </section>
 
@@ -27,21 +26,12 @@ import { hero } from '../content/siteCopy';
 
   .subheading {
     color: white;
+    font-family: var(--font-body);
     font-size: clamp(1.25rem, 2.5vw, 1.5rem);
     font-weight: 400;
     opacity: 0.95;
     max-width: 700px;
-    margin: 0 auto 2rem;
-    line-height: 1.6;
-  }
-
-  .boundary-text {
-    font-size: clamp(0.9375rem, 1.8vw, 1.0625rem);
-    opacity: 0.9;
-    max-width: 700px;
     margin: 0 auto;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    font-style: italic;
+    line-height: 1.6;
   }
 </style>
