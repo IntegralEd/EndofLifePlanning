@@ -62,12 +62,17 @@ export const misconceptions = [
   {
     id: 3,
     myth: "My family knows what I want",
-    reality: "You might have talked about it, but if it is not written down and communicated in advance, family members often disagree or second-guess decisions while in an emotional state. Clear written instructions remove the burden of guessing and give your loved ones permission to follow your wishes. Also, if you've only communicated your wishes to one person, and if you and that person were in an accident together, who would speak for you?"
+    reality: "You may have talked about it in passing, but conversations fade and memories differ. In an emergency, people often recall things differently or interpret your wishes in their own way. Clear written instructions reduce confusion and give your loved ones confidence to act."
   },
   {
     id: 4,
-    myth: "I've completed an advanced directive, so I'm set",
-    reality: "Completing legal paperwork with your doctor is a great step, but how will paramedics know your wishes? Do you know the laws in your state to make sure your wishes are followed, and have you communicated these wishes to every family member who is likely to show up at your home or hospital?"
+    myth: "I've told one person what I want. That's enough.",
+    reality: "Relying on a single person can create pressure and conflict. What if that person is not present, cannot be reached, or is grieving deeply? When more than one trusted person understands your wishes, the burden is shared and decisions are less likely to be questioned."
+  },
+  {
+    id: 5,
+    myth: "I've completed an advance directive, so I'm set.",
+    reality: "Completing legal paperwork is an important step, but documents alone are not a plan. Do the right people know where the documents are? Have you discussed your wishes so they understand the spirit behind them? Planning is not just paperwork. It is preparation and communication."
   }
 ];
 
