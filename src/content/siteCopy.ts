@@ -98,7 +98,7 @@ export const services = [
   {
     id: 4,
     title: "Private Property",
-    description: "Create a plan for personal belongings, family heirlooms, online accounts,and digital assets like photos and passwords.",
+    description: "Create a plan for personal belongings, family heirlooms, online accounts, and digital assets like photos and passwords.",
     icon: "property"
   }
 ];
