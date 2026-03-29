@@ -20,7 +20,7 @@ import Footer from '../components/Footer.astro';
         </div>
 
         <div class="pilot-fee-notice">
-          <p>This is a pilot session being offered in Bastrop on Thursday nights from 6:30-8:30pm (April 2, 9, 16 and 23). A $100 registration fee will be collected to reserve your spot. The fee will be returned to you upon completion of the workshop.</p>
+          <p>Sign up to be notified of upcoming in-person and virtual workshops.</p>
         </div>
 
         <form action="https://api.web3forms.com/submit" method="POST" class="signup-form" id="signup-form">
@@ -101,7 +101,7 @@ import Footer from '../components/Footer.astro';
           <p class="privacy-note">We respect your privacy. We do not sell your information.</p>
 
           <!-- Submit Button -->
-          <button type="submit" class="btn btn-primary btn-submit">Reserve</button>
+          <button type="submit" class="btn btn-primary btn-submit">Submit</button>
 
           <!-- Success Message (hidden by default) -->
           <div id="success-message" class="success-message" style="display: none;">
@@ -330,7 +330,7 @@ import Footer from '../components/Footer.astro';
         // Re-enable button
         if (submitButton) {
           submitButton.disabled = false;
-          submitButton.textContent = 'Reserve';
+          submitButton.textContent = 'Submit';
         }
       }
     });

@@ -13,6 +13,7 @@ const iconMap: Record<string, string> = {
 <section class="services-section">
   <div class="container">
     <h2>What We Cover in Our Workshops</h2>
+    <p class="services-subheader">Talking about death is hard. Our sessions move at a gentle pace, with space to process difficult emotions. You won't be asked to disclose personal information, or share your beliefs or final decisions.</p>
     <div class="services-grid">
       {services.map((service) => (
         <div class="service-card">
@@ -32,6 +33,13 @@ const iconMap: Record<string, string> = {
 
   .services-section h2 {
     text-align: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .services-subheader {
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 1.1rem;
     margin-bottom: 2.5rem;
   }
 
