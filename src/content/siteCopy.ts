@@ -5,7 +5,7 @@
 
 export const hero = {
   heading: "Guided, in-person workshops to help you clarify and communicate your end of life wishes.",
-  subheading: "Talking about death is difficult. Sessions introduce each topic mindfully and create space to process emotions.",
+  subheading: "Talking about death is hard. Our sessions move at a gentle pace, with space to process difficult emotions. You won't be asked to disclose personal information, or share your beliefs or final decisions.",
   boundaryStatement: "We facilitate and educate. We do not provide legal or medical advice, but we can help you prepare to work with licensed professionals."
 };
 
@@ -61,7 +61,7 @@ export const misconceptions = [
   },
   {
     id: 3,
-    myth: "My family knows what I want",
+    myth: "My family knows me well, so they will know what to do",
     reality: "You may have talked about it in passing, but conversations fade and memories differ. In an emergency, people often recall things differently or interpret your wishes in their own way. Clear written instructions reduce confusion and give your loved ones confidence to act."
   },
   {
